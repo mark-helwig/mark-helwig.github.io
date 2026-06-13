@@ -19,15 +19,17 @@ const AllExperience = ({ showDescription = true }) => {
 
 					<div className="timeline-info">
 						<div className="timeline-top">
-							<div className="timeline-title">
-								{experience.company}
+							<div className="timeline-top-left">
+								<div className="timeline-title">
+									{experience.company}
+								</div>
+								<div className="timeline-subtitle">
+									{experience.role}
+								</div>
 							</div>
-							<div className="timeline-subtitle">
-								{experience.role}
-							</div>
-						</div>
 
-						<div className="timeline-date">{experience.date}</div>
+							<div className="timeline-date">{experience.date}</div>
+						</div>
 
 						{showDescription && (
 							<div className="timeline-description">

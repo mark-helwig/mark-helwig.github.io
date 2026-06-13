@@ -16,7 +16,6 @@
 	width: 50px;
 	border-radius: 50%;
 	object-fit: cover;
-	outline: 6px solid var(--background-color);
 	box-shadow: 0px 7px 10px var(--shadow-color);
 }
 
@@ -31,6 +30,12 @@
 	align-items: baseline;
 }
 
+.timeline-top-left {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
 .timeline-title {
 	font-size: 16px;
 	font-weight: 700;
@@ -40,14 +45,13 @@
 .timeline-subtitle {
 	font-size: 14px;
 	color: var(--secondary-color);
-	padding-left: 10px;
-	white-space: nowrap;
 }
 
 .timeline-date {
 	font-size: 12px;
 	color: var(--tertiary-color);
-	padding-top: 5px;
+	padding-left: 15px;
+	white-space: nowrap;
 }
 
 .timeline-description {
@@ -62,7 +66,8 @@
 		flex-direction: column;
 	}
 
-	.timeline-subtitle {
+	.timeline-date {
 		padding-left: 0;
+		padding-top: 4px;
 	}
 }
