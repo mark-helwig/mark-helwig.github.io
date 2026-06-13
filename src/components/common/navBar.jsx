@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+
+import useTheme from "../../hooks/useTheme";
 
 import "./styles/navBar.css";
 
 const NavBar = (props) => {
 	const { active } = props;
+	const { theme, toggleTheme } = useTheme();
 
 	return (
 		<React.Fragment>
@@ -23,12 +28,12 @@ const NavBar = (props) => {
 							</li>
 							<li
 								className={
-									active === "about"
+									active === "experience"
 										? "nav-item active"
 										: "nav-item"
 								}
 							>
-								<Link to="/about">About</Link>
+								<Link to="/experience">Experience</Link>
 							</li>
 							<li
 								className={
@@ -41,26 +46,30 @@ const NavBar = (props) => {
 							</li>
 							<li
 								className={
-									active === "articles"
+									active === "publications"
 										? "nav-item active"
 										: "nav-item"
 								}
 							>
-								<Link to="/articles">Articles</Link>
-							</li>
-							<li
-								className={
-									active === "contact"
-										? "nav-item active"
-										: "nav-item"
-								}
-							>
-								<Link to="/contact">Contact</Link>
+								<Link to="/publications">Publications</Link>
 							</li>
 						</ul>
 					</div>
 				</nav>
 			</div>
+
+			<button
+				type="button"
+				className="theme-toggle-button"
+				onClick={toggleTheme}
+				aria-label={
+					theme === "dark"
+						? "Switch to light mode"
+						: "Switch to dark mode"
+				}
+			>
+				<FontAwesomeIcon icon={theme === "dark" ? faSun : faMoon} />
+			</button>
 		</React.Fragment>
 	);
 };

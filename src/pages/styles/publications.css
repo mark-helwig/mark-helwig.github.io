@@ -1,10 +1,10 @@
-.projects-logo-container {
+.publications-logo-container {
 	display: flex;
 	justify-content: left;
 	padding-top: 25px;
 }
 
-.projects-logo {
+.publications-logo {
 	display: flex;
 	position: fixed;
 	border: 1px solid var(--background-color);
@@ -14,7 +14,7 @@
 	z-index: 999;
 }
 
-.projects-container {
+.publications-page-container {
 	display: flex;
 	flex-direction: column;
 	height: 100%;
@@ -22,12 +22,13 @@
 	padding-top: 120px;
 }
 
-@media (max-width: 600px) {
-	.projects-container {
-		padding-top: 60px;
-	}
+.publications-list {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
 
-	.projects-project {
-		width: calc(100% / 2);
+@media (max-width: 600px) {
+	.publications-page-container {
+		padding-top: 60px;
 	}
 }

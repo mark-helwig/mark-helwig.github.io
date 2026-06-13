@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
+import {
+	faMailBulk,
+	faFileLines,
+	faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faTwitter,
@@ -13,13 +18,13 @@ import {
 import Logo from "../components/common/logo";
 import Footer from "../components/common/footer";
 import NavBar from "../components/common/navBar";
-import Article from "../components/homepage/article";
-import Works from "../components/homepage/works";
+import AllExperience from "../components/experience/allExperience";
+import Education from "../components/homepage/education";
+import AllPublications from "../components/publications/allPublications";
 import AllProjects from "../components/projects/allProjects";
 
 import INFO from "../data/user";
 import SEO from "../data/seo";
-import myArticles from "../data/articles";
 
 import "./styles/homepage.css";
 
@@ -63,9 +68,9 @@ const Homepage = () => {
 		position: stayLogo ? "fixed" : "relative",
 		top: stayLogo ? "3vh" : "auto",
 		zIndex: 999,
-		border: stayLogo ? "1px solid white" : "none",
+		border: stayLogo ? "1px solid var(--background-color)" : "none",
 		borderRadius: stayLogo ? "50%" : "none",
-		boxShadow: stayLogo ? "0px 4px 10px rgba(0, 0, 0, 0.25)" : "none",
+		boxShadow: stayLogo ? "0px 4px 10px var(--shadow-color)" : "none",
 	};
 
 	return (
@@ -164,33 +169,64 @@ const Homepage = () => {
 									className="homepage-social-icon"
 								/>
 							</a>
+
+							<a
+								href={INFO.main.resume}
+								target="_blank"
+								rel="noreferrer"
+								className="homepage-resume-button"
+							>
+								<FontAwesomeIcon icon={faFileLines} /> Resume
+							</a>
 						</div>
 
-						<div className="homepage-projects">
-							<AllProjects />
+						<div className="homepage-section" id="about">
+							<div className="homepage-section-title">
+								About Me
+							</div>
+							<div className="homepage-section-description">
+								{INFO.about.description}
+							</div>
 						</div>
 
-						<div className="homepage-after-title">
-							<div className="homepage-articles">
-								{myArticles.map((article, index) => (
-									<div
-										className="homepage-article"
-										key={(index + 1).toString()}
-									>
-										<Article
-											key={(index + 1).toString()}
-											date={article().date}
-											title={article().title}
-											description={article().description}
-											link={"/article/" + (index + 1)}
-										/>
-									</div>
-								))}
+						<div className="homepage-section" id="projects">
+							<div className="homepage-section-title">
+								Projects
 							</div>
+							<AllProjects limit={3} />
+							<div className="homepage-view-all-container">
+								<Link
+									to="/projects"
+									className="homepage-view-all-button"
+								>
+									View All Projects{" "}
+									<FontAwesomeIcon
+										style={{ fontSize: "10px" }}
+										icon={faChevronRight}
+									/>
+								</Link>
+							</div>
+						</div>
 
-							<div className="homepage-works">
-								<Works />
+						<div className="homepage-section" id="publications">
+							<div className="homepage-section-title">
+								Publications
 							</div>
+							<AllPublications />
+						</div>
+
+						<div className="homepage-section" id="experience">
+							<div className="homepage-section-title">
+								Work Experience
+							</div>
+							<AllExperience />
+						</div>
+
+						<div className="homepage-section" id="education">
+							<div className="homepage-section-title">
+								Education
+							</div>
+							<Education />
 						</div>
 
 						<div className="page-footer">

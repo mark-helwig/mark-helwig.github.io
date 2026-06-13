@@ -1,0 +1,68 @@
+@import "../../../data/styles.css";
+
+.timeline-container {
+	display: flex;
+	flex-direction: column;
+	gap: 35px;
+}
+
+.timeline-item {
+	display: flex;
+	align-items: flex-start;
+}
+
+.timeline-logo-image {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	object-fit: cover;
+	outline: 6px solid var(--background-color);
+	box-shadow: 0px 7px 10px var(--shadow-color);
+}
+
+.timeline-info {
+	flex: 1;
+	padding-left: 25px;
+}
+
+.timeline-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+
+.timeline-title {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--primary-color);
+}
+
+.timeline-subtitle {
+	font-size: 14px;
+	color: var(--secondary-color);
+	padding-left: 10px;
+	white-space: nowrap;
+}
+
+.timeline-date {
+	font-size: 12px;
+	color: var(--tertiary-color);
+	padding-top: 5px;
+}
+
+.timeline-description {
+	padding-top: 10px;
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--secondary-color);
+}
+
+@media (max-width: 600px) {
+	.timeline-top {
+		flex-direction: column;
+	}
+
+	.timeline-subtitle {
+		padding-left: 0;
+	}
+}

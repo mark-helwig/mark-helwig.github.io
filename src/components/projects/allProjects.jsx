@@ -6,10 +6,14 @@ import INFO from "../../data/user";
 
 import "./styles/allProjects.css";
 
-const AllProjects = () => {
+const AllProjects = (props) => {
+	const { limit } = props;
+
+	const projects = limit ? INFO.projects.slice(0, limit) : INFO.projects;
+
 	return (
 		<div className="all-projects-container">
-			{INFO.projects.map((project, index) => (
+			{projects.map((project, index) => (
 				<div className="all-projects-project" key={index}>
 					<Project
 						logo={project.logo}

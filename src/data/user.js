@@ -4,6 +4,7 @@ const INFO = {
 		name: "Tharindu N.",
 		email: "mail@tharindu.dev",
 		logo: "../logo.png",
+		resume: "/resume.pdf",
 	},
 
 	socials: {
@@ -27,10 +28,16 @@ const INFO = {
 			"I've worked on a variety of projects over the years and I'm proud of the progress I've made. Many of these projects are open-source and available for others to explore and contribute to. If you're interested in any of the projects I've worked on, please feel free to check out the code and suggest any improvements or enhancements you might have in mind. Collaborating with others is a great way to learn and grow, and I'm always open to new ideas and feedback.",
 	},
 
-	articles: {
-		title: "I'm passionate about pushing the boundaries of what's possible and inspiring the next generation of innovators.",
+	publicationsPage: {
+		title: "A collection of my publications, papers, and other written work.",
 		description:
-			"Chronological collection of my long-form thoughts on programming, leadership, product design, and more.",
+			"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+	},
+
+	experiencePage: {
+		title: "A timeline of where I've worked and what I've learned along the way.",
+		description:
+			"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
 	},
 
 	projects: [
@@ -77,6 +84,66 @@ const INFO = {
 			logo: "https://cdn.jsdelivr.net/npm/programming-languages-logos/src/javascript/javascript.png",
 			linkText: "View Project",
 			link: "https://github.com",
+		},
+	],
+
+	publications: [
+		{
+			title: "Publication Title 1",
+			venue: "Journal / Conference Name",
+			date: "2023",
+			description:
+				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+			link: "https://github.com",
+		},
+
+		{
+			title: "Publication Title 2",
+			venue: "Journal / Conference Name",
+			date: "2022",
+			description:
+				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+			link: "https://github.com",
+		},
+	],
+
+	experience: [
+		{
+			img: "./facebook.png",
+			role: "Software Engineer",
+			company: "Facebook",
+			date: "2019 - Present",
+			desc:
+				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+		},
+
+		{
+			img: "./twitter.png",
+			role: "Software Engineer",
+			company: "Twitter",
+			date: "2017 - 2019",
+			desc:
+				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+		},
+	],
+
+	education: [
+		{
+			img: "./logo.png",
+			degree: "M.S. in Computer Science",
+			school: "University Name",
+			date: "2021 - 2023",
+			desc:
+				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
+		},
+
+		{
+			img: "./logo.png",
+			degree: "B.S. in Computer Science",
+			school: "University Name",
+			date: "2017 - 2021",
+			desc:
+				"Lorem ipsum dolor sit amet. Et incidunt voluptatem ex tempore repellendus qui dicta nemo sit deleniti minima.",
 		},
 	],
 };
