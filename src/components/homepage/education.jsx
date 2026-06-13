@@ -2,36 +2,56 @@ import React from "react";
 
 import INFO from "../../data/user";
 
-import "../common/styles/timeline.css";
+import "../common/styles/education.css";
 
 const Education = () => {
 	return (
-		<div className="timeline-container">
+		<div className="education-container">
 			{INFO.education.map((education, index) => (
-				<div className="timeline-item" key={index}>
-					<div className="timeline-logo">
+				<div className="education-item" key={index}>
+					<div className="education-logo">
 						<img
 							src={education.img}
 							alt={education.school}
-							className="timeline-logo-image"
+							className="education-logo-image"
 						/>
 					</div>
 
-					<div className="timeline-info">
-						<div className="timeline-top">
-							<div className="timeline-title">
-								{education.degree}
-							</div>
-							<div className="timeline-subtitle">
-								{education.school}
-							</div>
+					<div className="education-content">
+						<div className="education-school">
+							{education.school}
 						</div>
 
-						<div className="timeline-date">{education.date}</div>
+						{education.degrees.map((degree, degreeIndex) => (
+							<div className="education-degree" key={degreeIndex}>
+								<div className="education-degree-header">
+									<div className="education-degree-title">
+										{degree.degree}
+									</div>
+									<div className="education-degree-date">
+										{degree.date}
+									</div>
+								</div>
 
-						<div className="timeline-description">
-							{education.desc}
-						</div>
+								{degree.gpa && (
+									<div className="education-degree-detail">
+										GPA: {degree.gpa}
+									</div>
+								)}
+
+								{degree.coursework && (
+									<div className="education-degree-detail">
+										Relevant Coursework: {degree.coursework}
+									</div>
+								)}
+
+								{degree.desc && (
+									<div className="education-degree-detail">
+										{degree.desc}
+									</div>
+								)}
+							</div>
+						))}
 					</div>
 				</div>
 			))}
