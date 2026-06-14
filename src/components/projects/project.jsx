@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import INFO from "../../data/user";
-
 import "./styles/project.css";
 
 const Project = (props) => {
@@ -46,16 +44,7 @@ const Project = (props) => {
 	);
 
 	if (teaser) {
-		return (
-			<a
-				href={INFO.socials.github}
-				target="_blank"
-				rel="noreferrer"
-				className="project-card-link"
-			>
-				{content}
-			</a>
-		);
+		return content;
 	}
 
 	if (website) {

@@ -46,7 +46,7 @@
 }
 
 .page-footer {
-	position: block;
+	position: relative;
 }
 
 .page-footer::before {

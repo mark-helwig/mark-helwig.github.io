@@ -10,7 +10,6 @@ const INFO = {
 	socials: {
 		github: "https://github.com/mark-helwig",
 		linkedin: "https://www.linkedin.com/in/mark-l-helwig/",
-		facebook: "https://facebook.com/",
 	},
 
 	homepage: {
