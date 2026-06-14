@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import INFO from "../../data/user";
 
@@ -43,17 +44,15 @@ const AllExperience = ({ showDescription = true }) => {
 					</div>
 				);
 
-				if (experience.website) {
+				if (experience.slug) {
 					return (
-						<a
-							href={experience.website}
-							target="_blank"
-							rel="noreferrer"
+						<Link
+							to={`/experience/${experience.slug}`}
 							className="timeline-item-link"
 							key={index}
 						>
 							{item}
-						</a>
+						</Link>
 					);
 				}
 
