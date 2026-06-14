@@ -24,8 +24,8 @@ const AllPublications = () => {
 						{publication.venue}
 					</div>
 
-					<div className="publication-description">
-						{publication.description}
+					<div className="publication-authors">
+						{publication.authors}
 					</div>
 
 					{(publication.link || publication.website) && (

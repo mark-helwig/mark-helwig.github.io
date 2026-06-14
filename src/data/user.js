@@ -518,8 +518,8 @@ const INFO = {
 			title: "ARISTO Hand: Sensing-Driven Distal Hyperextension for Fine-Grained Manipulation",
 			venue: "arXiv preprint (arXiv:2605.30508)",
 			date: "2026",
-			description:
-				"Introduces a tendon-driven robotic hand combining active distal hyperextension with hybrid fingertip sensing -- a rigid nail-mounted force-torque sensor paired with a soft capacitive tactile array -- achieving a 2.76x increase in pull-out force on thin objects while preserving standard grasp performance. With A. Kim, D.H. Kang, M. Seo, K. Yokoyama, T. Narita, and L. Sentis.",
+			authors:
+				"A. Kim, D.H. Kang, M. Helwig, M. Seo, K. Yokoyama, T. Narita, and L. Sentis",
 			link: "https://arxiv.org/abs/2605.30508",
 			website: "https://aristohand.github.io/",
 		},
