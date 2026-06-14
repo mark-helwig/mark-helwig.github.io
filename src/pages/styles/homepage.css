@@ -189,6 +189,10 @@
 		transform: none;
 	}
 
+	.homepage-sticky-logo {
+		margin-top: 0;
+	}
+
 	.homepage-sticky-logo .logo {
 		width: 40px;
 	}
