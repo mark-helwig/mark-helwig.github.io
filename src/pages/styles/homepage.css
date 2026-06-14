@@ -181,11 +181,12 @@
 	}
 
 	.homepage-image-wrapper {
-		transform: rotate(0deg);
+		transform: none;
+		transition: none;
 	}
 
 	.homepage-image-wrapper:hover {
-		transform: scale(1.03);
+		transform: none;
 	}
 }
 
