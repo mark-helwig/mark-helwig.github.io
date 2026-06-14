@@ -155,7 +155,9 @@ const Homepage = () => {
 								About Me
 							</div>
 							<div className="homepage-section-description">
-								{INFO.about.description}
+								{INFO.about.description.map((paragraph, index) => (
+									<p key={index}>{paragraph}</p>
+								))}
 							</div>
 						</div>
 

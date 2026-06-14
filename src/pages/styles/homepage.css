@@ -194,6 +194,14 @@
 	line-height: 28px;
 }
 
+.homepage-section-description p {
+	margin: 0 0 16px;
+}
+
+.homepage-section-description p:last-child {
+	margin-bottom: 0;
+}
+
 .homepage-section .all-projects-container {
 	margin: 0;
 	padding-top: 0;

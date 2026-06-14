@@ -20,8 +20,12 @@ const INFO = {
 
 	about: {
 		title: "I’m Mark Helwig. I'm based in Austin, Texas, where I build robots and the systems that control them.",
-		description:
-			"I'm an Electrical and Computer Engineering Honors student at UT Austin, minoring in Robotics. I'm drawn to the intersection of hardware and software -- designing embedded systems, building control loops, and training reinforcement learning policies that run on real robots. I've worked across research labs, startups, and aerospace, and I'm always looking for the next hands-on challenge. When I'm away from the lab, you'll usually find me climbing, cooking, or exploring new restaurants.",
+		description: [
+			"Hi! I'm Mark Helwig, an Electrical and Computer Engineering Honors student at UT Austin, minoring in Robotics, and based in Austin, Texas, where I build robots and the systems that control them. I do research at the Human Centered Robotics Lab, under the guidance of Dr. Luis Sentis, and I'm currently a Locomotion Engineering Intern at Persona AI, where Dr. Conner Herron and Dr. AJ Miller keep me on track under Dr. Jerry Pratt's locomotion team.",
+			"I'm drawn to the intersection of hardware and software -- designing the embedded systems and control loops that let a robot sense the world, then training the reinforcement learning policies that decide what it does next. Recently, that means teaching humanoid and quadruped robots to move with a bit more personality through style-transfer RL, building a retargeting pipeline so a robotic hand can mirror a human teleoperator, and wiring up 6-axis force/torque sensors so robots can react to a bump instead of just plowing through it.",
+			"In addition to humanoids, I spent a summer at Lockheed Martin Aeronautics automating F-35 flight data analysis, and a year at Pike Robotics designing the embedded systems and power electronics for an autonomous robot that lives inside oil storage tanks. In my spare time I've also built a Tron-themed handheld arcade console, taught a genetic algorithm to play Pacman, and built/tuned more PID controllers than I can count.",
+			"When I'm not in the lab, you'll usually find me climbing, cooking something ambitious (results vary), fumbling through a few chords on guitar, or hunting down the best dessert in Austin.",
+		],
 	},
 
 	publicationsPage: {
