@@ -60,6 +60,14 @@ const ProjectDetail = () => {
 							<div className="title project-detail-title">
 								{project.title}
 							</div>
+							<div className="subtitle project-detail-description">
+								{project.description}
+							</div>
+							{project.intro && (
+								<div className="subtitle project-detail-intro">
+									{project.intro}
+								</div>
+							)}
 						</div>
 
 						{project.image && (

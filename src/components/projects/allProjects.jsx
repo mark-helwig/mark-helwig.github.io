@@ -9,21 +9,21 @@ import "./styles/allProjects.css";
 const AllProjects = (props) => {
 	const { limit, category } = props;
 
+	const teasers = INFO.projectTeasers.map((teaser) => ({
+		...teaser,
+		teaser: true,
+	}));
+
 	let items;
 
-	if (category === "teaser") {
-		items = INFO.projectTeasers.map((teaser) => ({
-			...teaser,
-			teaser: true,
-		}));
+	if (category === "research") {
+		items = [
+			...teasers,
+			...INFO.projects.filter((project) => project.category === category),
+		];
 	} else if (category) {
 		items = INFO.projects.filter((project) => project.category === category);
 	} else {
-		const teasers = INFO.projectTeasers.map((teaser) => ({
-			...teaser,
-			teaser: true,
-		}));
-
 		items = [...teasers, ...INFO.projects];
 	}
 

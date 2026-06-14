@@ -127,7 +127,7 @@ const INFO = {
 			slug: "3-dof-articulated-robot-distance-tracking",
 			title: "3 DOF Articulated Robot Distance Tracking",
 			year: "2025",
-			category: "course",
+			category: "other",
 			image: "/projects/dof-tracking-2.png",
 			images: [
 				"/projects/dof-tracking-2.png",
@@ -180,7 +180,7 @@ const INFO = {
 			slug: "tron-handheld-arcade-console",
 			title: "Tron Handheld Arcade Console",
 			year: "2024",
-			category: "course",
+			category: "other",
 			image: "/projects/tron-console-1.jpg",
 			images: ["/projects/tron-console-1.jpg"],
 			overview:
@@ -234,7 +234,7 @@ const INFO = {
 			slug: "indoor-positioning-computer-vision",
 			title: "Indoor Positioning With Computer Vision and Linear Transformations",
 			year: "2022",
-			category: "course",
+			category: "other",
 			image: "/projects/indoor-positioning-1.jpg",
 			images: ["/projects/indoor-positioning-1.jpg"],
 			overview:
@@ -295,7 +295,7 @@ const INFO = {
 			slug: "first-tech-challenge-2023",
 			title: "FIRST Tech Challenge - 2023",
 			year: "2023",
-			category: "course",
+			category: "other",
 			image: "/projects/ftc-2023-1.jpg",
 			images: ["/projects/ftc-2023-1.jpg", "/projects/ftc-2023-2.jpg"],
 			overview:
@@ -350,7 +350,7 @@ const INFO = {
 			slug: "first-tech-challenge-2022",
 			title: "FIRST Tech Challenge - 2022",
 			year: "2022",
-			category: "course",
+			category: "other",
 			image: "/projects/ftc-2022-1.jpg",
 			images: ["/projects/ftc-2022-1.jpg"],
 			overview:
@@ -403,7 +403,7 @@ const INFO = {
 			slug: "pacman-genetic-algorithm",
 			title: "Pacman Genetic Algorithm",
 			year: "2023",
-			category: "course",
+			category: "other",
 			image: "/projects/pacman-genetic-1.png",
 			images: ["/projects/pacman-genetic-1.png"],
 			overview:
@@ -459,7 +459,7 @@ const INFO = {
 			slug: "pid-balance-beam",
 			title: "PID Balance Beam",
 			year: "2021",
-			category: "course",
+			category: "other",
 			image: "/projects/pid-balance-beam-1.png",
 			images: ["/projects/pid-balance-beam-1.png"],
 			overview:

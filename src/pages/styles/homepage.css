@@ -1,15 +1,46 @@
 @import "../../data/styles.css";
 
 .homepage-sticky-logo {
+	--fade-duration: 0.25s;
 	position: sticky;
 	top: 24px;
 	z-index: 999;
-	width: fit-content;
+	width: 80px;
+	height: 80px;
 	margin-top: 84px;
 }
 
 .homepage-sticky-logo .logo {
 	box-shadow: 0px 4px 10px var(--shadow-color);
+}
+
+.homepage-logo-large,
+.homepage-logo-small {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity var(--fade-duration) ease;
+}
+
+.homepage-logo-large {
+	opacity: 1;
+	transition-delay: var(--fade-duration);
+}
+
+.homepage-logo-small {
+	opacity: 0;
+}
+
+.homepage-sticky-logo.scrolled .homepage-logo-large {
+	opacity: 0;
+	transition-delay: 0s;
+}
+
+.homepage-sticky-logo.scrolled .homepage-logo-small {
+	opacity: 1;
+	transition-delay: var(--fade-duration);
 }
 
 .homepage-container {
@@ -30,6 +61,7 @@
 
 .homepage-title {
 	width: 85% !important;
+	white-space: nowrap;
 }
 
 .homepage-first-area-right-side {
@@ -186,6 +218,8 @@
 	}
 
 	.homepage-sticky-logo {
+		width: 40px;
+		height: 40px;
 		margin-top: 0;
 	}
 

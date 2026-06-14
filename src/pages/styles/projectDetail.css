@@ -61,6 +61,11 @@
 	width: 100%;
 }
 
+.project-detail-description,
+.project-detail-intro {
+	width: 100%;
+}
+
 .project-detail-hero {
 	margin-top: 30px;
 	display: flex;

@@ -3,7 +3,7 @@
 	display: block;
 	margin: 0;
 	padding: 0;
-	transition: transform var(--motion-spring), width 0.05s linear;
+	transition: transform var(--motion-spring);
 }
 
 .logo:hover {

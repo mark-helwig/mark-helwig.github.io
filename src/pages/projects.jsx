@@ -42,13 +42,6 @@ const Projects = () => {
 							The engineering behind some of my experiences
 						</div>
 
-						<div className="projects-section" id="current-projects">
-							<div className="projects-section-title">
-								Current Projects
-							</div>
-							<AllProjects category="teaser" />
-						</div>
-
 						<div className="projects-section" id="research">
 							<div className="projects-section-title">
 								Research
@@ -58,12 +51,12 @@ const Projects = () => {
 
 						<div
 							className="projects-section"
-							id="course-projects"
+							id="other-projects"
 						>
 							<div className="projects-section-title">
-								Course Projects
+								Other Projects
 							</div>
-							<AllProjects category="course" />
+							<AllProjects category="other" />
 						</div>
 					</div>
 					<div className="page-footer">

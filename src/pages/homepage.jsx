@@ -24,7 +24,7 @@ import SEO from "../data/seo";
 import "./styles/homepage.css";
 
 const Homepage = () => {
-	const [scrollProgress, setScrollProgress] = useState(0);
+	const [scrolled, setScrolled] = useState(false);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -32,8 +32,7 @@ const Homepage = () => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			const scroll = window.pageYOffset;
-			setScrollProgress(Math.min(1, scroll / 100));
+			setScrolled(window.pageYOffset > 0);
 		};
 
 		window.addEventListener("scroll", handleScroll);
@@ -41,8 +40,6 @@ const Homepage = () => {
 	}, []);
 
 	const currentSEO = SEO.find((item) => item.page === "home");
-
-	const logoSize = 80 - scrollProgress * 40;
 
 	return (
 		<React.Fragment>
@@ -59,8 +56,17 @@ const Homepage = () => {
 				<NavBar active="home" />
 
 				<div className="content-wrapper">
-					<div className="homepage-sticky-logo">
-						<Logo width={logoSize} link={false} />
+					<div
+						className={`homepage-sticky-logo${
+							scrolled ? " scrolled" : ""
+						}`}
+					>
+						<div className="homepage-logo-large">
+							<Logo width={80} link={false} />
+						</div>
+						<div className="homepage-logo-small">
+							<Logo width={40} link={false} />
+						</div>
 					</div>
 
 					<div className="homepage-container">
