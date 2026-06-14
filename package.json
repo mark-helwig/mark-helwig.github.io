@@ -9,6 +9,7 @@
 	},
 	"license": "MIT",
 	"private": true,
+	"homepage": "https://mark-helwig.github.io",
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^6.4.0",
 		"@fortawesome/free-brands-svg-icons": "^6.4.0",
