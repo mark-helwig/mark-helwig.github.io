@@ -14,3 +14,10 @@
 	transform: scale(0.95) rotate(-4deg);
 	transition: transform var(--motion-press);
 }
+
+@media (max-width: 600px) {
+	.logo:hover,
+	.logo:active {
+		transform: none;
+	}
+}

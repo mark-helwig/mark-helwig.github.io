@@ -188,6 +188,10 @@
 	.homepage-image-wrapper:hover {
 		transform: none;
 	}
+
+	.homepage-sticky-logo .logo {
+		width: 40px;
+	}
 }
 
 @media (max-width: 1024px) {
