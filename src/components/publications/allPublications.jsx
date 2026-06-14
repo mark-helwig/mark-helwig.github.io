@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 import INFO from "../../data/user";
 
@@ -28,15 +28,32 @@ const AllPublications = () => {
 						{publication.description}
 					</div>
 
-					{publication.link && (
-						<a
-							className="publication-link"
-							href={publication.link}
-							target="_blank"
-							rel="noreferrer"
-						>
-							<FontAwesomeIcon icon={faLink} /> View Publication
-						</a>
+					{(publication.link || publication.website) && (
+						<div className="publication-links">
+							{publication.link && (
+								<a
+									className="publication-link"
+									href={publication.link}
+									target="_blank"
+									rel="noreferrer"
+								>
+									<FontAwesomeIcon icon={faLink} /> View
+									Publication
+								</a>
+							)}
+
+							{publication.website && (
+								<a
+									className="publication-link"
+									href={publication.website}
+									target="_blank"
+									rel="noreferrer"
+								>
+									<FontAwesomeIcon icon={faGlobe} /> Project
+									Website
+								</a>
+							)}
+						</div>
 					)}
 				</div>
 			))}

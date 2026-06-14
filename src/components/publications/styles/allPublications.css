@@ -46,9 +46,15 @@
 	color: var(--secondary-color);
 }
 
+.publication-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding-top: 15px;
+}
+
 .publication-link {
 	display: inline-block;
-	padding-top: 15px;
 	font-size: 13px;
 	font-weight: 700;
 	color: var(--link-color);

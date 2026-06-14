@@ -7,21 +7,35 @@ import INFO from "../../data/user";
 import "./styles/allProjects.css";
 
 const AllProjects = (props) => {
-	const { limit } = props;
+	const { limit, category } = props;
 
-	const projects = limit ? INFO.projects.slice(0, limit) : INFO.projects;
+	let items;
+
+	if (category === "teaser") {
+		items = INFO.projectTeasers.map((teaser) => ({
+			...teaser,
+			teaser: true,
+		}));
+	} else if (category) {
+		items = INFO.projects.filter((project) => project.category === category);
+	} else {
+		const teasers = INFO.projectTeasers.map((teaser) => ({
+			...teaser,
+			teaser: true,
+		}));
+
+		items = [...teasers, ...INFO.projects];
+	}
+
+	if (limit) {
+		items = items.slice(0, limit);
+	}
 
 	return (
 		<div className="all-projects-container">
-			{projects.map((project, index) => (
-				<div className="all-projects-project" key={index}>
-					<Project
-						logo={project.logo}
-						title={project.title}
-						description={project.description}
-						linkText={project.linkText}
-						link={project.link}
-					/>
+			{items.map((item, index) => (
+				<div className="all-projects-project" key={item.slug || `teaser-${index}`}>
+					<Project {...item} />
 				</div>
 			))}
 		</div>

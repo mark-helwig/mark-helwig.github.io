@@ -22,12 +22,36 @@
 	padding-top: 120px;
 }
 
+.projects-section {
+	margin-top: 40px;
+	padding: 35px;
+	border-radius: 20px;
+	outline: 2px solid var(--border-color);
+	transition: outline-color 0.2s ease-in-out;
+}
+
+.projects-section-title {
+	color: var(--primary-color);
+	font-family: var(--secondary-font);
+	font-size: 28px;
+	font-weight: 700;
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid var(--quaternary-color);
+}
+
+.projects-section .all-projects-container {
+	margin: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
 @media (max-width: 600px) {
 	.projects-container {
 		padding-top: 60px;
 	}
 
-	.projects-project {
-		width: calc(100% / 2);
+	.projects-section {
+		padding: 20px;
 	}
 }

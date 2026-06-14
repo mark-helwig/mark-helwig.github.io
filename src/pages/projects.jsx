@@ -56,8 +56,28 @@ const Projects = () => {
 							feedback.
 						</div>
 
-						<div className="projects-list">
-							<AllProjects />
+						<div className="projects-section" id="current-projects">
+							<div className="projects-section-title">
+								Current Projects
+							</div>
+							<AllProjects category="teaser" />
+						</div>
+
+						<div className="projects-section" id="research">
+							<div className="projects-section-title">
+								Research
+							</div>
+							<AllProjects category="research" />
+						</div>
+
+						<div
+							className="projects-section"
+							id="course-projects"
+						>
+							<div className="projects-section-title">
+								Course Projects
+							</div>
+							<AllProjects category="course" />
 						</div>
 					</div>
 					<div className="page-footer">

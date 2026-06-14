@@ -138,7 +138,7 @@ const Homepage = () => {
 								href={INFO.main.resume}
 								target="_blank"
 								rel="noreferrer"
-								className="homepage-resume-button"
+								className="homepage-view-all-button homepage-view-all-button-accent"
 							>
 								<FontAwesomeIcon icon={faFileLines} /> Resume
 							</a>
@@ -161,7 +161,7 @@ const Homepage = () => {
 							<div className="homepage-view-all-container">
 								<Link
 									to="/projects"
-									className="homepage-view-all-button"
+									className="homepage-view-all-button homepage-view-all-button-accent"
 								>
 									View All Projects{" "}
 									<FontAwesomeIcon
@@ -184,6 +184,18 @@ const Homepage = () => {
 								Work Experience
 							</div>
 							<AllExperience showDescription={false} />
+							<div className="homepage-view-all-container">
+								<Link
+									to="/experience"
+									className="homepage-view-all-button homepage-view-all-button-accent"
+								>
+									More Information{" "}
+									<FontAwesomeIcon
+										style={{ fontSize: "10px" }}
+										icon={faChevronRight}
+									/>
+								</Link>
+							</div>
 						</div>
 
 						<div className="homepage-section" id="education">
