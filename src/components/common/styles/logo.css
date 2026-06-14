@@ -3,4 +3,14 @@
 	display: block;
 	margin: 0;
 	padding: 0;
+	transition: transform var(--motion-spring);
+}
+
+.logo:hover {
+	transform: scale(1.08) rotate(-8deg);
+}
+
+.logo:active {
+	transform: scale(0.95) rotate(-4deg);
+	transition: transform var(--motion-press);
 }

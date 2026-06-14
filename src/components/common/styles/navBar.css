@@ -47,13 +47,20 @@
 }
 
 .nav-item a {
+	display: inline-block;
 	text-decoration: none;
 	color: var(--primary-color);
+	transition: color 0.3s ease-in-out, transform var(--motion-spring);
 }
 
 .nav-item a:hover {
 	color: var(--link-color);
-	transition: color 0.3s ease-in-out;
+	transform: translateY(-2px) scale(1.08);
+}
+
+.nav-item a:active {
+	transform: scale(0.94);
+	transition: transform var(--motion-press);
 }
 
 .theme-toggle-button {
@@ -81,7 +88,12 @@
 
 .theme-toggle-button:hover {
 	color: var(--link-color);
-	transform: translateY(-2px);
+	transform: translateY(-2px) rotate(15deg) scale(1.08);
+}
+
+.theme-toggle-button:active {
+	transform: scale(0.9) rotate(-10deg);
+	transition: transform var(--motion-press);
 }
 
 @media (max-width: 600px) {

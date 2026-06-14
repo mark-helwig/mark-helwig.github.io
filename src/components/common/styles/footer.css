@@ -30,12 +30,20 @@
 }
 
 .footer-nav-link-list a {
+	display: inline-block;
 	text-decoration: none;
 	color: var(--secondary-color);
+	transition: color 0.2s ease-in-out, transform var(--motion-spring);
 }
 
 .footer-nav-link-list a:hover {
 	color: var(--link-color);
+	transform: translateY(-3px);
+}
+
+.footer-nav-link-list a:active {
+	transform: translateY(-1px) scale(0.95);
+	transition: transform var(--motion-press);
 }
 
 .footer-credits-text {

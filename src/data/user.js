@@ -14,7 +14,7 @@ const INFO = {
 	},
 
 	homepage: {
-		title: "Hi, I'm Mark.",
+		title: "Hi, I'm Mark",
 		description:
 			"I'm an undergraduate student at UT Austin studying Electrical and Computer Engineering, focusing on robotics.",
 	},

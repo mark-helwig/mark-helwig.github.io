@@ -4,6 +4,14 @@
 	mix-blend-mode: normal;
 	border-radius: 20px;
 	outline: 2px solid var(--border-color);
+	transition: outline-color 0.2s ease-in-out, transform var(--motion-spring),
+		box-shadow var(--motion-spring);
+}
+
+.card:hover {
+	outline-color: var(--link-color);
+	transform: translateY(-6px) scale(1.015);
+	box-shadow: 0px 12px 25px var(--shadow-color);
 }
 
 .card-container {

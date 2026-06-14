@@ -67,6 +67,12 @@
 	background-color: var(--background-color);
 	color: var(--link-color);
 	box-shadow: 2px 2px 8px var(--shadow-color);
+	transform: translateY(-3px) scale(1.03);
+}
+
+.not-found-link:active {
+	transform: translateY(-1px) scale(0.97);
+	transition: transform var(--motion-press);
 }
 
 @media (max-width: 500px) {
