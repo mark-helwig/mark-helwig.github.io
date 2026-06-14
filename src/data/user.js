@@ -41,21 +41,32 @@ const INFO = {
 	// and projects page until details are ready to publish.
 	projectTeasers: [
 		{
-			title: "Humanoid Hand Embedded Systems Design",
+			title: "Discriminator-Free Style Transfer for Humanoid Locomotion (RL)",
 			status: "In Progress",
 			description:
-				"Details coming soon. In the meantime, check out my GitHub for updates.",
+				"Details coming soon.",
 		},
 
 		{
-			title: "Generalized Humanoid Motion Planning (RL)",
+			title: "Hand Retargeting for Teleoperation of a Robotic Arm and Hand",
 			status: "In Progress",
 			description:
-				"Details coming soon. In the meantime, check out my GitHub for updates.",
+				"Details coming soon.",
 		},
 	],
 
 	projects: [
+		{
+			slug: "aristo-hand",
+			title: "ARISTO Hand: Sensing-Driven Distal Hyperextension for Fine-Grained Manipulation",
+			year: "2026",
+			category: "research",
+			image: "/projects/aristo-hand-1.jpg",
+			overview:
+				"PCB design, embedded systems, CAN integration, and control design for the ARISTO hand.",
+			website: "https://aristohand.github.io/",
+		},
+
 		{
 			slug: "humanoid-ft-sensor-integration",
 			title: "Humanoid F/T Sensor Integration",
@@ -563,8 +574,6 @@ const INFO = {
 					gpa: "3.88/4.0",
 					coursework:
 						"Real-Time Digital Signal Processing, Aerial Robotics, Robot Mechanism Design, Automatic Control",
-					desc:
-						"Honors student focused on robotics, control systems, and modeling, with hands-on experience in embedded systems, mechatronics, and reinforcement learning research on humanoid and quadruped locomotion.",
 				},
 			],
 		},

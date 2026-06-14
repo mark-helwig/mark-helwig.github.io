@@ -6,8 +6,17 @@ import INFO from "../../data/user";
 import "./styles/project.css";
 
 const Project = (props) => {
-	const { slug, title, year, image, overview, description, teaser, status } =
-		props;
+	const {
+		slug,
+		title,
+		year,
+		image,
+		overview,
+		description,
+		teaser,
+		status,
+		website,
+	} = props;
 
 	const cardText = overview || description;
 
@@ -40,6 +49,19 @@ const Project = (props) => {
 		return (
 			<a
 				href={INFO.socials.github}
+				target="_blank"
+				rel="noreferrer"
+				className="project-card-link"
+			>
+				{content}
+			</a>
+		);
+	}
+
+	if (website) {
+		return (
+			<a
+				href={website}
 				target="_blank"
 				rel="noreferrer"
 				className="project-card-link"

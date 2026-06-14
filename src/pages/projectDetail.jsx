@@ -18,7 +18,9 @@ const ProjectDetail = () => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const project = INFO.projects.find((item) => item.slug === slug);
+	const project = INFO.projects.find(
+		(item) => item.slug === slug && !item.website
+	);
 
 	if (!project) {
 		return <Notfound />;
