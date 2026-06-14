@@ -530,6 +530,7 @@ const INFO = {
 			role: "Locomotion Engineering Intern",
 			company: "Persona AI",
 			date: "May 2026 - Present",
+			website: "https://persona.ai/",
 			desc:
 				"Engineering behaviors across multiple humanoid hardware platforms using Nvidia's IsaacLab, and developing a pipeline for logging and processing hardware and simulation data.",
 		},
@@ -539,6 +540,7 @@ const INFO = {
 			role: "Researcher",
 			company: "Human Centered Robotics Group",
 			date: "Sep 2024 - Present",
+			website: "https://sites.utexas.edu/hcrl/",
 			desc:
 				"Researching discriminator-free style transfer for expressive locomotion in humanoids and quadrupeds using RL in IsaacLab to deploy on hardware. Developing a custom retargeting algorithm for teleoperation of a robotic arm and hand, rudimentary whole-body locomanipulation for the Unitree G1, embedded systems (CAN hardware/firmware, ROS2, impedance control) for an imitation-learning-controlled robotic hand, and 6-axis force/torque sensing in humanoid limbs for multi-contact planning.",
 		},
@@ -548,6 +550,7 @@ const INFO = {
 			role: "Systems Engineering Intern",
 			company: "Lockheed Martin Aeronautics",
 			date: "May 2025 - Aug 2025",
+			website: "https://www.lockheedmartin.com/en-us/who-we-are/business-areas/aeronautics.html",
 			desc:
 				"Developed and owned a Python app for automation of sustainment engineering interpretation of F-35 flight data across all Mission System subsystems, improving process workflow by 92%. Created, maintained, and documented a codebase combining a GUI, automated database interaction (SQL), and automated data visualization.",
 		},
@@ -557,6 +560,7 @@ const INFO = {
 			role: "Electrical Engineer",
 			company: "Pike Robotics",
 			date: "Sep 2023 - Sep 2024",
+			website: "https://www.pikerobotics.com/",
 			desc:
 				"Worked independently to design and validate an autonomous embedded system that manages an umbilical line and communicates with a host robot in an oil storage tank environment. Designed and implemented the main power distribution PCB at 250W, meeting UL60950-1 electrical safety standards under UL 1203 C1D1 explosion-proof conditions.",
 		},
