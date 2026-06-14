@@ -24,9 +24,7 @@ import SEO from "../data/seo";
 import "./styles/homepage.css";
 
 const Homepage = () => {
-	const [stayLogo, setStayLogo] = useState(false);
-	const [logoSize, setLogoSize] = useState(80);
-	const [oldLogoSize, setOldLogoSize] = useState(80);
+	const [scrollProgress, setScrollProgress] = useState(0);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -34,38 +32,18 @@ const Homepage = () => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			let scroll = Math.round(window.pageYOffset, 2);
-
-			let newLogoSize = 80 - (scroll * 4) / 10;
-
-			if (newLogoSize < oldLogoSize) {
-				if (newLogoSize > 40) {
-					setLogoSize(newLogoSize);
-					setOldLogoSize(newLogoSize);
-					setStayLogo(false);
-				} else {
-					setStayLogo(true);
-				}
-			} else {
-				setLogoSize(newLogoSize);
-				setStayLogo(false);
-			}
+			const scroll = window.pageYOffset;
+			setScrollProgress(Math.min(1, scroll / 100));
 		};
 
 		window.addEventListener("scroll", handleScroll);
 		return () => window.removeEventListener("scroll", handleScroll);
-	}, [logoSize, oldLogoSize]);
+	}, []);
 
 	const currentSEO = SEO.find((item) => item.page === "home");
 
-	const logoStyle = {
-		display: "flex",
-		position: stayLogo ? "fixed" : "relative",
-		top: stayLogo ? "3vh" : "auto",
-		zIndex: 999,
-		borderRadius: stayLogo ? "50%" : "none",
-		boxShadow: stayLogo ? "0px 4px 10px var(--shadow-color)" : "none",
-	};
+	const logoSize = 80 - scrollProgress * 40;
+	const logoTop = 124 - scrollProgress * 100;
 
 	return (
 		<React.Fragment>
@@ -80,12 +58,18 @@ const Homepage = () => {
 
 			<div className="page-content">
 				<NavBar active="home" />
-				<div className="content-wrapper">
-					<div className="homepage-logo-container">
-						<div style={logoStyle}>
-							<Logo width={logoSize} link={false} />
-						</div>
+
+				<div
+					className="homepage-fixed-logo"
+					style={{ top: `${logoTop}px` }}
+				>
+					<div className="content-wrapper">
+						<Logo width={logoSize} link={false} />
 					</div>
+				</div>
+
+				<div className="content-wrapper">
+					<div className="homepage-logo-placeholder" />
 
 					<div className="homepage-container">
 						<div className="homepage-first-area">

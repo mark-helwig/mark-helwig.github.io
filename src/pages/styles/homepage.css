@@ -1,10 +1,20 @@
 @import "../../data/styles.css";
 
-.homepage-logo-container {
-	display: flex;
-	justify-content: left;
-	align-items: center;
-	padding-top: 40px;
+.homepage-logo-placeholder {
+	height: 204px;
+}
+
+.homepage-fixed-logo {
+	position: fixed;
+	left: 0;
+	right: 0;
+	z-index: 999;
+	pointer-events: none;
+	transition: top 0.05s linear;
+}
+
+.homepage-fixed-logo .logo {
+	box-shadow: 0px 4px 10px var(--shadow-color);
 }
 
 .homepage-container {
@@ -37,8 +47,8 @@
 }
 
 .homepage-image-container {
-	width: 280px;
-	height: 280px;
+	width: 400px;
+	height: 400px;
 }
 
 .homepage-image-wrapper {
@@ -46,12 +56,12 @@
 	height: 100%;
 	overflow: hidden;
 	border-radius: 10%;
-	transform: rotate(3deg);
+	transform: rotate(5deg);
 	transition: transform var(--motion-spring);
 }
 
 .homepage-image-wrapper:hover {
-	transform: rotate(0deg) scale(1.03);
+	transform: rotate(3deg) scale(1.08);
 }
 
 .homepage-image-wrapper img {
@@ -59,11 +69,6 @@
 	height: 100%;
 	object-fit: cover;
 	display: block;
-	transition: transform var(--motion-spring);
-}
-
-.homepage-image-wrapper:hover img {
-	transform: scale(1.08);
 }
 
 .homepage-socials {
