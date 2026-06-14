@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
@@ -8,7 +8,7 @@ import {
 	faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import Logo from "../components/common/logo";
 import Footer from "../components/common/footer";
@@ -25,10 +25,23 @@ import "./styles/homepage.css";
 
 const Homepage = () => {
 	const [scrolled, setScrolled] = useState(false);
+	const [emailCopied, setEmailCopied] = useState(false);
+	const copyTimeoutRef = useRef(null);
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+
+	useEffect(() => {
+		return () => clearTimeout(copyTimeoutRef.current);
+	}, []);
+
+	const handleCopyEmail = () => {
+		navigator.clipboard.writeText(INFO.main.email);
+		setEmailCopied(true);
+		clearTimeout(copyTimeoutRef.current);
+		copyTimeoutRef.current = setTimeout(() => setEmailCopied(false), 2000);
+	};
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -102,15 +115,30 @@ const Homepage = () => {
 								/>
 							</a>
 							<a
-								href={`mailto:${INFO.main.email}`}
+								href={INFO.socials.linkedin}
 								target="_blank"
 								rel="noreferrer"
 							>
 								<FontAwesomeIcon
-									icon={faMailBulk}
+									icon={faLinkedin}
 									className="homepage-social-icon"
 								/>
 							</a>
+							<div className="homepage-social-icon-wrapper">
+								<button
+									type="button"
+									className="homepage-social-icon homepage-social-icon-button"
+									onClick={handleCopyEmail}
+									aria-label="Copy email address"
+								>
+									<FontAwesomeIcon icon={faMailBulk} />
+								</button>
+								{emailCopied && (
+									<span className="homepage-copy-tooltip">
+										Email copied!
+									</span>
+								)}
+							</div>
 
 							<a
 								href={INFO.main.resume}
