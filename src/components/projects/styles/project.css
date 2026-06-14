@@ -106,6 +106,17 @@
 	color: var(--secondary-color);
 }
 
+.project-card-teaser:hover {
+	outline-color: var(--link-color);
+	transform: translateY(-6px) scale(1.015);
+	box-shadow: 0px 12px 25px var(--shadow-color);
+}
+
+.project-card-teaser:active {
+	transform: translateY(-2px) scale(0.99);
+	transition: transform var(--motion-press);
+}
+
 .project-card-status {
 	display: inline-flex;
 	align-self: flex-start;
