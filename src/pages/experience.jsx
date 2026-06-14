@@ -43,10 +43,6 @@ const Experience = () => {
 							{INFO.experiencePage.title}
 						</div>
 
-						<div className="subtitle experience-subtitle">
-							{INFO.experiencePage.description}
-						</div>
-
 						<div className="experience-list">
 							<AllExperience />
 						</div>

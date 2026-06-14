@@ -43,10 +43,6 @@ const Publications = () => {
 							{INFO.publicationsPage.title}
 						</div>
 
-						<div className="subtitle publications-subtitle">
-							{INFO.publicationsPage.description}
-						</div>
-
 						<div className="publications-list">
 							<AllPublications />
 						</div>

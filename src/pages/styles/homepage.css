@@ -32,10 +32,6 @@
 	width: 85% !important;
 }
 
-.homepage-subtitle {
-	width: 85% !important;
-}
-
 .homepage-first-area-right-side {
 	display: flex;
 	align-items: center;
@@ -215,12 +211,6 @@
 		width: 100% !important;
 		margin-top: 20px;
 		order: 2;
-	}
-
-	.homepage-subtitle {
-		width: 100% !important;
-		margin-top: 10px;
-		order: 3;
 	}
 
 	.homepage-first-area-right-side {

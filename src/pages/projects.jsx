@@ -42,14 +42,6 @@ const Projects = () => {
 							The engineering behind some of my experiences
 						</div>
 
-						<div className="subtitle projects-subtitle">
-							A look at the research, coursework, and personal
-							builds where I've put robotics, embedded systems,
-							and control theory into practice -- from PCB design
-							and sensor integration to reinforcement learning
-							running on real hardware.
-						</div>
-
 						<div className="projects-section" id="current-projects">
 							<div className="projects-section-title">
 								Current Projects
