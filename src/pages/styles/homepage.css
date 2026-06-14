@@ -1,19 +1,14 @@
 @import "../../data/styles.css";
 
-.homepage-logo-placeholder {
-	height: 204px;
-}
-
-.homepage-fixed-logo {
-	position: fixed;
-	left: 0;
-	right: 0;
+.homepage-sticky-logo {
+	position: sticky;
+	top: 24px;
 	z-index: 999;
-	pointer-events: none;
-	transition: top 0.05s linear;
+	width: fit-content;
+	margin-top: 84px;
 }
 
-.homepage-fixed-logo .logo {
+.homepage-sticky-logo .logo {
 	box-shadow: 0px 4px 10px var(--shadow-color);
 }
 

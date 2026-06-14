@@ -43,7 +43,6 @@ const Homepage = () => {
 	const currentSEO = SEO.find((item) => item.page === "home");
 
 	const logoSize = 80 - scrollProgress * 40;
-	const logoTop = 124 - scrollProgress * 100;
 
 	return (
 		<React.Fragment>
@@ -59,17 +58,10 @@ const Homepage = () => {
 			<div className="page-content">
 				<NavBar active="home" />
 
-				<div
-					className="homepage-fixed-logo"
-					style={{ top: `${logoTop}px` }}
-				>
-					<div className="content-wrapper">
+				<div className="content-wrapper">
+					<div className="homepage-sticky-logo">
 						<Logo width={logoSize} link={false} />
 					</div>
-				</div>
-
-				<div className="content-wrapper">
-					<div className="homepage-logo-placeholder" />
 
 					<div className="homepage-container">
 						<div className="homepage-first-area">

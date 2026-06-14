@@ -26,13 +26,13 @@ const INFO = {
 	},
 
 	publicationsPage: {
-		title: "A collection of my publications, papers, and other written work.",
+		title: "Publications",
 		description:
 			"Research I've contributed to in robotics and manipulation, including peer-reviewed papers and preprints.",
 	},
 
 	experiencePage: {
-		title: "A timeline of where I've worked and what I've learned along the way.",
+		title: "Where I worked and what I learned",
 		description:
 			"From robotics research to aerospace and startup engineering teams -- a timeline of where I've worked and what I've built along the way.",
 	},
