@@ -173,6 +173,20 @@
 	.homepage-section {
 		padding: 20px;
 	}
+
+	.homepage-image-container {
+		width: 240px;
+		height: 240px;
+		margin: 0 auto;
+	}
+
+	.homepage-image-wrapper {
+		transform: rotate(0deg);
+	}
+
+	.homepage-image-wrapper:hover {
+		transform: scale(1.03);
+	}
 }
 
 @media (max-width: 1024px) {
