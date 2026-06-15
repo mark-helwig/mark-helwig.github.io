@@ -9,11 +9,11 @@ const Project = (props) => {
 		title,
 		year,
 		image,
+		video,
 		overview,
 		description,
 		teaser,
 		status,
-		website,
 	} = props;
 
 	const cardText = overview || description;
@@ -24,10 +24,21 @@ const Project = (props) => {
 		<div className={cardClassName}>
 			{!teaser && (
 				<React.Fragment>
-					<div
-						className="project-card-image"
-						style={{ backgroundImage: `url(${image})` }}
-					/>
+					{video ? (
+						<video
+							className="project-card-image project-card-video"
+							src={video}
+							autoPlay
+							muted
+							loop
+							playsInline
+						/>
+					) : (
+						<div
+							className="project-card-image"
+							style={{ backgroundImage: `url(${image})` }}
+						/>
+					)}
 					<div className="project-card-scrim" />
 				</React.Fragment>
 			)}
@@ -45,19 +56,6 @@ const Project = (props) => {
 
 	if (teaser) {
 		return content;
-	}
-
-	if (website) {
-		return (
-			<a
-				href={website}
-				target="_blank"
-				rel="noreferrer"
-				className="project-card-link"
-			>
-				{content}
-			</a>
-		);
 	}
 
 	return (

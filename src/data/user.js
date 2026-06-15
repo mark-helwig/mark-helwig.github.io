@@ -47,14 +47,14 @@ const INFO = {
 			title: "Discriminator-Free Style Transfer for Humanoid Locomotion (RL)",
 			status: "In Progress",
 			description:
-				"Details coming soon.",
+				"Training a Unitree G1 in IsaacLab to walk with a distinct style, and to carry that style onto new terrain -- like a slope -- without retraining for new rewards. I'm building the full pipeline myself: pretraining models, running the RL sims, and testing different model/algorithm combinations.",
 		},
 
 		{
 			title: "Hand Retargeting for Teleoperation of a Robotic Arm and Hand",
 			status: "In Progress",
 			description:
-				"Details coming soon.",
+				"Building a live teleoperation pipeline that senses how a human bends their fingers and retargets that motion -- including hyperextension -- onto the ARISTO hand. I'm exploring two approaches in parallel: camera-based hand-pose estimation and a motion-capture glove, with early, noisy results from the vision pipeline so far.",
 		},
 	],
 
@@ -65,9 +65,121 @@ const INFO = {
 			year: "2026",
 			category: "research",
 			image: "/projects/aristo-hand-1.jpg",
+			images: [
+				"/projects/aristo-hand-1.jpg",
+				"/projects/aristo-hand-2.jpg",
+				"/projects/aristo-hand-3.jpg",
+			],
 			overview:
 				"PCB design, embedded systems, CAN integration, and control design for the ARISTO hand.",
+			description:
+				"Designed the power and communication electronics for ARISTO, a three-fingered hand that feels contact through fingernail-mounted force/torque sensors and tactile fingertips, and hyperextends its fingers to grip objects as thin as an SD card.",
+			intro:
+				"ARISTO is a sensorized hand my lab built for fine-grained manipulation -- mini F/T sensors behind each fingernail and tactile sensors in the fingertips let it feel contact forces and surface pressure, while its fingers can hyperextend nearly parallel to grip very thin objects. My contribution was the hand's power and communication electronics: the PCB that drives its eight motors and the CAN/ROS2 software that connects them to the rest of the control stack.",
 			website: "https://aristohand.github.io/",
+			sections: [
+				{
+					title: "Purpose",
+					items: [
+						"Build the power and communication hardware that lets ARISTO's eight motors move, and that exposes its fingernail F/T sensors and tactile fingertips to the rest of the system",
+					],
+				},
+				{
+					title: "Requirements",
+					items: [
+						"Drive all eight hand motors (24V, ~1.5A stall current each) from a single board",
+						"Fit entirely inside the hand's housing -- about 3 square inches of usable board space",
+						"Give ROS2 a way to talk directly to each motor's low-level firmware over CAN",
+					],
+				},
+				{
+					title: "Challenges",
+					items: [
+						"Packaging power delivery and CAN communication for 8 motors onto a ~3 in² board",
+						"No existing driver let ROS2 communicate directly with the motors' low-level firmware",
+						"Integrating that new communication layer into ARISTO's existing ROS2 control architecture without disrupting it",
+					],
+				},
+				{
+					title: "Solutions",
+					items: [
+						"Designed and iterated on a compact PCB that distributes 24V power and CAN communication to all eight motors",
+						"Wrote a PCAN-based driver that lets ROS2 talk directly to each motor's low-level firmware over CAN",
+						"Integrated the driver into ARISTO's ROS2 stack as its motor communication layer",
+						"Took the board through a major redesign focused on packaging and power density once the first layouts couldn't fit the housing",
+					],
+				},
+				{
+					title: "Conclusion",
+					items: [
+						"After the redesign, the board reliably powers and commands all eight motors through ROS2",
+						"Seeing the hand move under its own control for the first time, after months of PCB and firmware work, was the project's biggest milestone",
+						"This work is part of the ARISTO Hand paper, which is headed to a conference",
+					],
+				},
+			],
+		},
+
+		{
+			slug: "g1-whole-body-locomanipulation",
+			title: "Curriculum Driven RL for Whole-Body Locomanipulation on a Humanoid",
+			year: "2026",
+			category: "research",
+			video: "/projects/locomanipulation_1.webm",
+			videos: [
+				"/projects/locomanipulation_1.webm",
+				"/projects/locomanipulation_2.webm",
+			],
+			overview:
+				"RL training and sim2sim transfer for a Unitree G1 that learns to walk to a table, pick up a box with its arms, and walk again while carrying it.",
+			description:
+				"Trained a Unitree G1 in IsaacLab to combine locomotion and arm manipulation through a simple, staged curriculum, then validated the policy in a Mujoco sim2sim demo of the robot walking to a table, picking up a box, and carrying it to another table.",
+			intro:
+				"Whole-body locomanipulation means a robot can move its arms independently while it's walking -- here, a Unitree G1 that walks up to a table, picks up a box, and carries it to another table. This is a separate project from my hand-retargeting work; the goal wasn't a polished manipulation pipeline, but a simple training method that could bootstrap this kind of general behavior in the first place. I built the RL training pipeline and handled the sim2sim transfer, while a labmate developed the higher-level planner that decides where the robot walks and what it reaches for.",
+			sections: [
+				{
+					title: "Purpose",
+					items: [
+						"Develop a simple, curriculum-based RL method that lets a humanoid combine locomotion and arm manipulation, as a starting point for more general whole-body behaviors",
+						"Demonstrate the approach on a concrete task: walk to a table, pick up a box, and carry it to another table",
+					],
+				},
+				{
+					title: "Requirements",
+					items: [
+						"Train the policy in IsaacLab on a Unitree G1",
+						"Policy must locomote at varying speeds while independently positioning its hands within its local workspace",
+						"Trained policy must transfer to a Mujoco sim2sim environment for validation",
+						"Target objects are large and light, like an empty box -- precision grasping wasn't a goal",
+					],
+				},
+				{
+					title: "Challenges",
+					items: [
+						"Combining locomotion and arm manipulation into a single policy without making the training overly complex",
+						"The hand-positioning task is target-based with no force or contact feedback, so manipulation accuracy is inherently coarse",
+						"Coordinating with a separate, higher-level planner that issues the walk and reach targets",
+						"Confirming the trained policy's behavior held up after sim2sim transfer from IsaacLab to Mujoco",
+					],
+				},
+				{
+					title: "Solutions",
+					items: [
+						"Built a staged curriculum: first taught the policy to walk, then to walk at different speeds, then layered on a hand-positioning task driven by a position target within its reachable workspace",
+						"Kept the manipulation objective intentionally simple -- position tracking only -- so it could be learned on top of the existing locomotion policy without retraining from scratch",
+						"Owned the RL training pipeline and sim2sim transfer, working alongside a labmate's higher-level planner that issued the walk and reach commands",
+					],
+				},
+				{
+					title: "Conclusion",
+					items: [
+						"Demonstrated the full task in sim2sim: the G1 walks to a table, picks up a box with its arms, and walks again while carrying it",
+						"The position-target approach to hand placement reached about 5cm accuracy within the reachable workspace -- enough for large, light objects like the test box",
+						"Showed that a simple, staged curriculum is enough to bootstrap whole-body locomanipulation without hand-designed manipulation rewards",
+						"A labmate later carried the approach further, verifying it on the Unitree R1 humanoid in simulation",
+					],
+				},
+			],
 		},
 
 		{
@@ -81,27 +193,30 @@ const INFO = {
 				"/projects/humanoid-ft-sensor-2.jpg",
 			],
 			overview:
-				"Integrated and calibrated four 6-axis force/torque sensors into a humanoid robot's wrists and ankles.",
+				"Diagnosed, calibrated, and integrated 6-axis force/torque sensors into a humanoid robot's ankles after reverse-engineering its aging amplifier hardware.",
 			description:
-				"Integrated four 6-axis force/torque sensors into a humanoid's wrists and ankles, reverse-engineering proprietary amplifier boards and writing the algorithm that interprets contact wrenches in real time.",
+				"Diagnosed why the lab's aging 6-axis force/torque sensors were noisy or silent, reverse-engineered their proprietary amplifier boards, and integrated two of them into a humanoid's ankles with an algorithm that interprets contact wrenches in real time.",
+			intro:
+				"This project started as detective work: the lab had a set of old F/T sensors that were either silent or producing noisy garbage, and my job was to figure out why. Some were broken outright, the amplifier boards needed reverse-engineering, and the sensors were old enough that I had to call the manufacturer directly just to recover their calibration matrices.",
 			sections: [
 				{
 					title: "Purpose",
 					items: [
-						"Integrate four 6-axis Force/Torque (F/T) sensors into the wrists and ankles of a humanoid robot",
+						"Integrate 6-axis Force/Torque (F/T) sensors into a humanoid robot's wrists and ankles to support a multi-contact planning project",
 					],
 				},
 				{
 					title: "Requirements",
 					items: [
-						"Must use available F/T sensors: ATI mini40 and mini45",
+						"Must use the lab's available F/T sensors: ATI mini40 and mini45",
 						"Sensors must read the contact force properly within an error margin",
 					],
 				},
 				{
 					title: "Challenges",
 					items: [
-						"Calibration of each sensor individually and fixing old sensors",
+						"Diagnosing why the existing F/T sensors were noisy or not communicating at all, and figuring out which of the old sensors were actually broken",
+						"The sensors were old enough that we had to call ATI directly to recover their F/T calibration matrices",
 						"Understanding and redesigning amplifier boards for accurate sensor data",
 						"Designing a test platform to determine the accuracy of sensor data",
 						"Visualizing the force/torque data in multi-contact robot simulations",
@@ -110,18 +225,19 @@ const INFO = {
 				{
 					title: "Solutions",
 					items: [
-						"Understood the hardware architecture and talked to the supplier",
-						"Reverse-engineered the existing proprietary boards and designed new amplifiers with a different approach",
-						"Designed to isolate and allow two axes of force/torque measurement",
+						"Called ATI to recover F/T calibration matrices for the aging sensors",
+						"Reverse-engineered the existing proprietary amplifier boards and designed new ones with a different approach",
+						"Designed the new amplifiers to isolate and read two axes of force/torque each",
 						"Wrote an algorithm that read the analog data and interpreted a single wrench originating from the appropriate contact point, oriented perpendicular to the current contact for a given limb",
 					],
 				},
 				{
 					title: "Conclusion",
 					items: [
-						"Two F/T sensors were successfully integrated into the ankles",
-						"Force was correctly read within a margin of error of ~1 lb",
-						"Torque was correctly interpreted with a margin of error of ~0.25 Nm",
+						"Two F/T sensors were successfully calibrated and integrated into the ankles",
+						"Force was correctly read within a margin of error of ~1 lb, and torque within ~0.25 Nm",
+						"The wrist sensors were never completed, as lab priorities shifted to other projects",
+						"The original goal was to use this sensing for a multi-contact planning paper on hardware, but other parts of the robot never came together, so the integration itself was never used in that context",
 					],
 				},
 			],
@@ -237,7 +353,7 @@ const INFO = {
 		{
 			slug: "indoor-positioning-computer-vision",
 			title: "Indoor Positioning With Computer Vision and Linear Transformations",
-			year: "2022",
+			year: "2022-24",
 			category: "other",
 			image: "/projects/indoor-positioning-1.jpg",
 			images: ["/projects/indoor-positioning-1.jpg"],
@@ -540,9 +656,9 @@ const INFO = {
 				"Engineering behaviors across multiple humanoid hardware platforms using Nvidia's IsaacLab, and developing a pipeline for logging and processing hardware and simulation data.",
 			sections: [
 				{
-					title: "Engineering Humanoid Locomotion",
+					title: "Engineering Humanoid Behaviors",
 					description:
-						"Engineering behaviors across multiple humanoid hardware platforms using Nvidia's IsaacLab, and developing a pipeline for logging and processing hardware and simulation data.",
+						"Details coming soon — I'll share more about this role once I'm able to.",
 				},
 			],
 		},
@@ -561,22 +677,27 @@ const INFO = {
 				{
 					title: "Researching Expressive Robot Locomotion",
 					description:
-						"Researching discriminator-free style transfer for expressive locomotion in humanoids and quadrupeds using RL in IsaacLab to deploy on hardware.",
+						"Building an RL pipeline in IsaacLab that teaches a Unitree G1 to walk with a distinct style, with the goal of carrying that style to new terrain -- like a slope -- without designing new reward functions. I'm responsible for the full implementation: pretraining models, running RL simulations, and testing different model/algorithm combinations.",
 				},
 				{
 					title: "Teleoperation Hand Retargeting",
 					description:
-						"Developing a custom retargeting algorithm for teleoperation of a robotic arm and hand, with rudimentary whole-body locomanipulation for the Unitree G1.",
+						"Designing and validating my own retargeting algorithm for live hand teleoperation -- sensing how a human bends their fingers and translating that onto the ARISTO hand, including its hyperextension. I'm building two approaches in parallel, a camera-based hand-pose estimator and a motion-capture glove, with early results from the vision pipeline so far.",
+				},
+				{
+					title: "Whole-Body Locomanipulation for the Unitree G1",
+					description:
+						"Built an RL training pipeline that teaches a Unitree G1 to combine walking and arm manipulation through a simple curriculum -- first walking, then walking at different speeds, then reaching toward a position target within its local workspace. I owned the RL training and sim2sim transfer, working with a labmate who built the higher-level planner. We validated the approach in Mujoco with the G1 walking to a table, picking up a box, and walking again while carrying it.",
 				},
 				{
 					title: "Embedded Systems for an Imitation-Learning Hand",
 					description:
-						"Building embedded systems (CAN hardware/firmware, ROS2, impedance control) for an imitation-learning-controlled robotic hand.",
+						"Designed the power and CAN communication PCB for ARISTO, our imitation-learning-controlled robotic hand, and wrote the driver and ROS2 integration that connect its eight motors to the rest of the control stack -- work that's now part of the ARISTO Hand paper headed to a conference.",
 				},
 				{
 					title: "Force/Torque Sensing for Multi-Contact Planning",
 					description:
-						"Integrating 6-axis force/torque sensing in humanoid limbs for multi-contact planning.",
+						"Diagnosed and reverse-engineered a set of aging 6-axis force/torque sensors, then calibrated and integrated two of them into a humanoid's ankles -- including calling the manufacturer directly to recover decades-old calibration data.",
 				},
 			],
 		},
@@ -589,7 +710,7 @@ const INFO = {
 			date: "May 2025 - Aug 2025",
 			website: "https://www.lockheedmartin.com/en-us/who-we-are/business-areas/aeronautics.html",
 			desc:
-				"Developed and owned a Python app for automation of sustainment engineering interpretation of F-35 flight data across all Mission System subsystems, improving process workflow by 92%. Created, maintained, and documented a codebase combining a GUI, automated database interaction (SQL), and automated data visualization.",
+				"Developed and owned a Python app for automation of sustainment engineering interpretation of F-35 flight data across all Mission System subsystems, improving process workflow by 92%. Created, maintained, and documented a codebase combining a GUI, automated database interaction (SQL), and automated data visualization. As the only intern on a team of full-time engineers, I was proud to see the tool adopted by multiple other teams by the end of the internship.",
 			sections: [
 				{
 					title: "Automating F-35 Flight Data Analysis",
@@ -600,6 +721,11 @@ const INFO = {
 					title: "GUI, Database, and Visualization Tooling",
 					description:
 						"Created, maintained, and documented a codebase combining a GUI, automated database interaction (SQL), and automated data visualization.",
+				},
+				{
+					title: "Adoption Across Teams",
+					description:
+						"As the only intern on a large engineering team, I was proud to see the app adopted beyond my own team -- by the end of the internship, it had been recommended for use by multiple other teams I wasn't even part of.",
 				},
 			],
 		},
@@ -613,17 +739,27 @@ const INFO = {
 			date: "Sep 2023 - Sep 2024",
 			website: "https://www.pikerobotics.com/",
 			desc:
-				"Worked independently to design and validate an autonomous embedded system that manages an umbilical line and communicates with a host robot in an oil storage tank environment. Designed and implemented the main power distribution PCB at 250W, meeting UL60950-1 electrical safety standards under UL 1203 C1D1 explosion-proof conditions.",
+				"Owned the design and validation of an autonomous embedded system that manages an umbilical line -- providing power, communication, and non-flammable purge gas -- between a host robot and a robot operating inside an oil storage tank, working directly with the CTO on day-to-day priorities and project direction. Also designed the system's 250W power distribution PCB, meeting UL60950-1 safety standards under UL 1203 C1D1 explosion-proof conditions.",
 			sections: [
 				{
-					title: "Autonomous Embedded System for Tank Robotics",
+					title: "Owning the Embedded System End to End",
 					description:
-						"Worked independently to design and validate an autonomous embedded system that manages an umbilical line and communicates with a host robot in an oil storage tank environment.",
+						"I owned the embedded system end to end -- design, build, and validation -- working directly with the CTO to set both day-to-day priorities and the project's overall direction.",
 				},
 				{
-					title: "250W Power Distribution PCB",
+					title: "Umbilical Line: Power, Communication, and Purge Gas",
 					description:
-						"Designed and implemented the main power distribution PCB at 250W, meeting UL60950-1 electrical safety standards under UL 1203 C1D1 explosion-proof conditions.",
+						"Designed the embedded system that manages the umbilical line connecting the robot to the surface -- carrying power, communication, and a non-flammable purge gas that keeps the robot's electronics enclosure compliant with explosion-proof safety standards.",
+				},
+				{
+					title: "250W Explosion-Proof Power Distribution PCB",
+					description:
+						"Designed and implemented the robot's main 250W power distribution PCB, powering its motors, onboard computer, sensors, and microcontrollers. Met UL60950-1 electrical safety standards under UL 1203 C1D1 explosion-proof conditions by porting published specs into the design and ensuring every component on the board was individually certified.",
+				},
+				{
+					title: "Cable Management and Fleet-Ready Communication",
+					description:
+						"One of the hardest problems was managing the umbilical cable's load against the anchor holding it -- by the end of my time there, I had proof-of-concept tests showing it worked. I'm most proud that the system I built operated autonomously and could communicate with the host robot as part of a fleet.",
 				},
 			],
 		},

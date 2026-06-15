@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 import NavBar from "../components/common/navBar";
 import Footer from "../components/common/footer";
@@ -18,9 +20,7 @@ const ProjectDetail = () => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	const project = INFO.projects.find(
-		(item) => item.slug === slug && !item.website
-	);
+	const project = INFO.projects.find((item) => item.slug === slug);
 
 	if (!project) {
 		return <Notfound />;
@@ -28,6 +28,10 @@ const ProjectDetail = () => {
 
 	const galleryImages = project.images
 		? project.images.filter((image) => image !== project.image)
+		: [];
+
+	const galleryVideos = project.videos
+		? project.videos.filter((video) => video !== project.video)
 		: [];
 
 	return (
@@ -68,15 +72,43 @@ const ProjectDetail = () => {
 									{project.intro}
 								</div>
 							)}
+
+							{project.website && (
+								<a
+									href={project.website}
+									target="_blank"
+									rel="noreferrer"
+									className="project-detail-website-button"
+								>
+									Visit Website{" "}
+									<FontAwesomeIcon
+										icon={faArrowUpRightFromSquare}
+										style={{ fontSize: "12px" }}
+									/>
+								</a>
+							)}
 						</div>
 
-						{project.image && (
+						{project.video ? (
 							<div className="project-detail-hero">
-								<img
-									src={project.image}
-									alt={project.title}
+								<video
+									src={project.video}
+									controls
+									autoPlay
+									muted
+									loop
+									playsInline
 								/>
 							</div>
+						) : (
+							project.image && (
+								<div className="project-detail-hero">
+									<img
+										src={project.image}
+										alt={project.title}
+									/>
+								</div>
+							)
 						)}
 
 						<div className="project-detail-sections">
@@ -99,7 +131,7 @@ const ProjectDetail = () => {
 							))}
 						</div>
 
-						{galleryImages.length > 0 && (
+						{(galleryImages.length > 0 || galleryVideos.length > 0) && (
 							<div className="project-detail-gallery">
 								{galleryImages.map((image, index) => (
 									<img
@@ -107,6 +139,17 @@ const ProjectDetail = () => {
 										key={index}
 										src={image}
 										alt={project.title}
+									/>
+								))}
+								{galleryVideos.map((video, index) => (
+									<video
+										className="project-detail-gallery-video"
+										key={index}
+										src={video}
+										controls
+										muted
+										loop
+										playsInline
 									/>
 								))}
 							</div>
