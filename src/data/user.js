@@ -252,7 +252,7 @@ const INFO = {
 
 		{
 			slug: "aerial-robotics",
-			title: "Autonomous Quadrotor Navigation: From Simulation to Competition",
+			title: "Quadrotor Navigation: From Simulation to Competition",
 			year: "2026",
 			category: "other",
 			video: "/projects/aerial-robotics-hero-web.mp4",
@@ -262,7 +262,8 @@ const INFO = {
 			description:
 				"A semester-long course project in ASE 479W (Aerial Robotics) at UT Austin, building a layered quadrotor autonomy stack in MATLAB and C++ that flew on a custom drone in a live cage competition, earning third place.",
 			intro:
-				"ASE 479W is the aerial robotics course at UT Austin — one semester to build a complete autonomous flight stack from the physics up, then compete with it on real hardware. The assignment structure was deliberately layered: each lab added one new piece — a dynamics simulator, a closed-loop controller, a UKF state estimator, a path planner, a vision pipeline — and the final tournament gathered a team of three to integrate all of it in C++ and fly it on a custom quadrotor in the lab's flight cage. For the final, I owned the 3D A* implementation and the polynomial trajectory generation engine; my teammates handled the planner architecture and the balloon-detection vision pipeline. The algorithm ran clean on real hardware, and our team placed third out of roughly fifteen.",
+				"ASE 479W is the aerial robotics course at UT Austin — one semester to build a complete autonomous flight stack from the physics up, then compete with it on real hardware. The assignment structure was deliberately layered: each lab added one new piece — a dynamics simulator, a closed-loop controller, a UKF state estimator, a path planner, a vision pipeline — and the final tournament gathered a team of three to integrate all of it in C++ and fly it on a custom quadrotor in the lab's flight cage. For the final, I owned the 3D A* implementation and the polynomial trajectory generation engine; my teammates handled the planner architecture and the balloon-detection vision pipeline.",
+			fullReports: "https://github.com/mark-helwig/aerial-robotics-labs",
 			sections: [
 				{
 					title: "Building the Simulator",

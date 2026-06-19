@@ -79,19 +79,38 @@ const ProjectDetail = () => {
 								</div>
 							)}
 
-							{project.website && (
-								<a
-									href={project.website}
-									target="_blank"
-									rel="noreferrer"
-									className="project-detail-website-button"
-								>
-									Visit Website{" "}
-									<FontAwesomeIcon
-										icon={faArrowUpRightFromSquare}
-										style={{ fontSize: "12px" }}
-									/>
-								</a>
+							{(project.website || project.fullReports) && (
+								<div className="project-detail-actions">
+									{project.website && (
+										<a
+											href={project.website}
+											target="_blank"
+											rel="noreferrer"
+											className="project-detail-website-button"
+										>
+											Visit Website{" "}
+											<FontAwesomeIcon
+												icon={faArrowUpRightFromSquare}
+												style={{ fontSize: "12px" }}
+											/>
+										</a>
+									)}
+
+									{project.fullReports && (
+										<a
+											href={project.fullReports}
+											target="_blank"
+											rel="noreferrer"
+											className="project-detail-website-button"
+										>
+											Full Reports{" "}
+											<FontAwesomeIcon
+												icon={faArrowUpRightFromSquare}
+												style={{ fontSize: "12px" }}
+											/>
+										</a>
+									)}
+								</div>
 							)}
 						</div>
 
