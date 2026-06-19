@@ -8,6 +8,7 @@ import ExperienceDetail from "./pages/experienceDetail";
 import Projects from "./pages/projects";
 import ProjectDetail from "./pages/projectDetail";
 import Publications from "./pages/publications";
+import EducationPage from "./pages/education";
 import Notfound from "./pages/404";
 
 import { TRACKING_ID } from "./data/tracking";
@@ -35,6 +36,7 @@ function App() {
 					element={<ProjectDetail />}
 				/>
 				<Route path="/publications" element={<Publications />} />
+				<Route path="/education" element={<EducationPage />} />
 				<Route path="*" element={<Notfound />} />
 			</Routes>
 		</div>

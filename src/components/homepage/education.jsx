@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import INFO from "../../data/user";
 
@@ -8,7 +9,11 @@ const Education = () => {
 	return (
 		<div className="education-container">
 			{INFO.education.map((education, index) => (
-				<div className="education-item" key={index}>
+				<Link
+					to="/education"
+					className="education-item education-item-link"
+					key={index}
+				>
 					<div className="education-logo">
 						<img
 							src={education.img}
@@ -53,7 +58,7 @@ const Education = () => {
 							</div>
 						))}
 					</div>
-				</div>
+				</Link>
 			))}
 		</div>
 	);

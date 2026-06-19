@@ -8,8 +8,23 @@
 
 .education-item {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	gap: 25px;
+}
+
+.education-item-link {
+	text-decoration: none;
+	color: inherit;
+	border-radius: 8px;
+	padding: 12px;
+	margin: -12px;
+	transition: background-color var(--motion-spring), box-shadow var(--motion-spring), transform var(--motion-spring);
+}
+
+.education-item-link:hover {
+	background-color: var(--background-secondary-color);
+	box-shadow: 0px 6px 16px var(--shadow-color);
+	transform: translateY(-3px);
 }
 
 .education-logo-image {

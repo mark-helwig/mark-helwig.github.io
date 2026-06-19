@@ -40,6 +40,12 @@ const INFO = {
 			"From robotics research to aerospace and startup engineering teams -- a timeline of where I've worked and what I've built along the way.",
 	},
 
+	educationPage: {
+		title: "My coursework at UT Austin",
+		description:
+			"Undergraduate study in electrical and computer engineering, with a focus on robotics, signal processing, and control systems.",
+	},
+
 	// Teaser cards for in-progress / undisclosed projects. Shown on the homepage
 	// and projects page until details are ready to publish.
 	projectTeasers: [
@@ -776,6 +782,52 @@ const INFO = {
 					gpa: "3.88/4.0",
 					coursework:
 						"Real-Time Digital Signal Processing, Aerial Robotics, Robot Mechanism Design, Automatic Control",
+				},
+			],
+			courseTopics: [
+				{
+					topic: "Robotics & Control",
+					courses: [
+						{ code: "ECE 319H", name: "Intro to Embedded Systems (Honors)" },
+						{ code: "RBT 350", name: "Gateway to Robotics" },
+						{ code: "ECE 362K", name: "Intro to Automatic Control" },
+						{ code: "ME 380R", name: "Robot Mechanism Design" },
+						{ code: "ASE 387P", name: "Aerial Robotics" },
+					],
+				},
+				{
+					topic: "Signal Processing",
+					courses: [
+						{ code: "ECE 313", name: "Linear Systems and Signals" },
+						{ code: "ECE 351H", name: "Probability and Random Processes (Honors)" },
+						{ code: "ECE 351M", name: "Digital Signal Processing" },
+						{ code: "ECE 445S", name: "Real-Time Digital Signal Processing Lab" },
+					],
+				},
+				{
+					topic: "Algorithms & Software",
+					courses: [
+						{ code: "ECE 306", name: "Introduction to Computing" },
+						{ code: "ECE 312H", name: "Software Design and Implementation I (Honors)" },
+						{ code: "ECE 360C", name: "Algorithms" },
+					],
+				},
+				{
+					topic: "Circuits & Electronics",
+					courses: [
+						{ code: "ECE 302H", name: "Intro to Electrical Engineering (Honors)" },
+						{ code: "ECE 411", name: "Circuit Theory" },
+						{ code: "ECE 316", name: "Digital Logic Design" },
+					],
+				},
+				{
+					topic: "Mathematics",
+					courses: [
+						{ code: "M 427L", name: "Advanced Calculus for Applications II (Honors)" },
+						{ code: "M 325K", name: "Discrete Mathematics" },
+						{ code: "M 427J", name: "Differential Equations with Linear Algebra" },
+						{ code: "M 340L", name: "Matrices and Matrix Calculations" },
+					],
 				},
 			],
 		},

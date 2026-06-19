@@ -1,0 +1,180 @@
+@import "../../data/styles.css";
+
+.education-page-logo-container {
+	display: flex;
+	justify-content: left;
+	padding-top: 25px;
+}
+
+.education-page-logo {
+	display: flex;
+	position: fixed;
+	border: 1px solid var(--background-color);
+	border-radius: 50%;
+	box-shadow: 0px 4px 10px var(--shadow-color);
+	top: 4vh;
+	z-index: 999;
+}
+
+.education-page-container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	margin: 0;
+	padding-top: 120px;
+	padding-bottom: 50px;
+}
+
+.education-page-school {
+	padding-top: 50px;
+}
+
+.education-page-school-header {
+	display: flex;
+	align-items: flex-start;
+	gap: 25px;
+}
+
+.education-page-school-logo-image {
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	object-fit: cover;
+	box-shadow: 0px 7px 10px var(--shadow-color);
+	flex-shrink: 0;
+}
+
+.education-page-school-info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.education-page-school-name {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--primary-color);
+}
+
+.education-page-degree {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding-left: 20px;
+	border-left: 3px solid var(--link-color);
+}
+
+.education-page-degree-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 15px;
+}
+
+.education-page-degree-title {
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--primary-color);
+}
+
+.education-page-degree-date {
+	font-size: 13px;
+	color: var(--tertiary-color);
+	white-space: nowrap;
+}
+
+.education-page-degree-detail {
+	font-size: 14px;
+	line-height: 1.6;
+	color: var(--secondary-color);
+}
+
+.education-page-courses {
+	padding-top: 50px;
+}
+
+.education-page-courses-heading {
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--primary-color);
+	padding-bottom: 16px;
+	border-bottom: 2px solid var(--border-color);
+}
+
+.education-page-topics-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 40px 60px;
+	padding-top: 35px;
+}
+
+.education-page-topic-name {
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--link-color);
+	text-transform: uppercase;
+	letter-spacing: 0.07em;
+	margin-bottom: 12px;
+}
+
+.education-page-course-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.education-page-course-item {
+	display: flex;
+	align-items: baseline;
+	gap: 12px;
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--secondary-color);
+}
+
+.education-page-course-code {
+	font-family: monospace;
+	font-size: 12px;
+	color: var(--tertiary-color);
+	white-space: nowrap;
+	min-width: 68px;
+	flex-shrink: 0;
+}
+
+.education-page-course-name {
+	color: var(--secondary-color);
+}
+
+@media (max-width: 600px) {
+	.education-page-container {
+		padding-top: 60px;
+	}
+
+	.education-page-school-header {
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+	}
+
+	.education-page-school-info {
+		width: 100%;
+	}
+
+	.education-page-degree {
+		text-align: left;
+	}
+
+	.education-page-degree-header {
+		flex-direction: column;
+		gap: 4px;
+	}
+
+	.education-page-topics-grid {
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+}

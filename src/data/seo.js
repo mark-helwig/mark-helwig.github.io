@@ -26,6 +26,13 @@ const SEO = [
 			"I've worked on a variety of projects over the years and I'm proud of the progress I've made. Many of these projects are open-source and available for others to explore and contribute to.",
 		keywords: ["Mark Helwig", "Mark L. Helwig", "M. Helwig", "M Helwig"],
 	},
+
+	{
+		page: "education",
+		description:
+			"Undergraduate coursework in electrical engineering, robotics, signal processing, and control systems at the University of Texas at Austin.",
+		keywords: ["Mark Helwig", "Mark L. Helwig", "M. Helwig", "M Helwig"],
+	},
 ];
 
 export default SEO;
