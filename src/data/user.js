@@ -1,6 +1,6 @@
 const INFO = {
 	main: {
-		title: "Portfolio",
+		title: "Mark Helwig",
 		name: "Mark Helwig",
 		email: "helwig.l.mark@gmail.com",
 		logo: "../logo.png",
@@ -424,7 +424,7 @@ const INFO = {
 			description:
 				"A camera-based indoor localization system for a low-cost delivery robot (Sidd), using colored ceiling anchor points, OpenCV centroid tracking, and linear transformations to estimate position and orientation.",
 			intro:
-				"This system is part of my Short Indoor Distance Delivery (Sidd) Robot project. After noticing that local restaurants and cafes struggled to remain open during the pandemic, Sidd was designed to bring a customer their food or beverage while avoiding close-proximity contact between staff and guests, with potential to expand to similar use cases like delivering medication in hospitals. While industry delivery robots already exist, the goal of Sidd is to provide an affordable alternative for local business owners.",
+				"This was the localization system I designed for Sidd, a short indoor delivery robot concept I was developing. The idea came from watching local restaurants and cafes struggle to stay open during the pandemic -- the robot was meant to bring food or beverages to customers without requiring close contact between staff and guests, with potential to expand to use cases like hospital medication delivery. Industry delivery robots already exist, but the goal of Sidd was to offer something affordable for local businesses. This positioning system was built and validated; the full robot was never completed.",
 			sections: [
 				{
 					title: "Purpose",
@@ -695,6 +695,14 @@ const INFO = {
 	],
 
 	publications: [
+		{
+			title: "A Bilateral Teleoperation Framework for Dexterous Manipulation",
+			venue: "arXiv preprint (arXiv:2606.15434)",
+			date: "2026",
+			authors:
+				"S. Dalla Gasperina, D.H. Kang, H. Zhang, A. Galvan, J.D. Ramirez, A. Kim, M. Helwig, K. Yokoyama, T. Ueno, T. Narita, A. Majewicz-Fey, A.D. Deshpande, and L. Sentis",
+			link: "https://arxiv.org/abs/2606.15434",
+		},
 		{
 			title: "ARISTO Hand: Sensing-Driven Distal Hyperextension for Fine-Grained Manipulation",
 			venue: "arXiv preprint (arXiv:2605.30508)",

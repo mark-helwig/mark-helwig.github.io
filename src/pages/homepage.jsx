@@ -64,6 +64,15 @@ const Homepage = () => {
 					name="keywords"
 					content={currentSEO.keywords.join(", ")}
 				/>
+				<meta property="og:type" content="website" />
+				<meta property="og:title" content={INFO.main.name} />
+				<meta property="og:description" content={currentSEO.description} />
+				<meta property="og:url" content="https://mark-helwig.github.io/" />
+				<meta property="og:image" content="https://mark-helwig.github.io/homepage.jpg" />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content={INFO.main.name} />
+				<meta name="twitter:description" content={currentSEO.description} />
+				<meta name="twitter:image" content="https://mark-helwig.github.io/homepage.jpg" />
 			</Helmet>
 
 			<div className="page-content">
