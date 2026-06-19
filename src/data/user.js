@@ -22,10 +22,10 @@ const INFO = {
 	about: {
 		title: "I’m Mark Helwig. I'm based in Austin, Texas, where I build robots and the systems that control them.",
 		description: [
-			"Hi! I'm Mark Helwig, an Electrical and Computer Engineering Honors student at UT Austin, minoring in Robotics, and based in Austin, Texas, where I build robots and the systems that control them. I conduct research at the Human Centered Robotics Lab, under the guidance of Dr. Luis Sentis, and I'm currently a Locomotion Engineering Intern at Persona AI, where Dr. Conner Herron and Dr. AJ Miller keep me on track under Dr. Jerry Pratt's locomotion team.",
-			"I'm drawn to the intersection of hardware and software -- designing the embedded systems and control loops that let a robot sense the world, then training the reinforcement learning policies that decide what it does next. Recently, that involves teaching humanoid and quadruped robots to move with a bit more personality through style-transfer RL, building a retargeting pipeline so a robotic hand can mirror a human teleoperator, and wiring up 6-axis force/torque sensors so robots can react to a bump instead of just plowing through it.",
-			"In addition to humanoids, I spent a summer at Lockheed Martin Aeronautics automating F-35 flight data analysis, and a year at Pike Robotics designing the embedded systems and power electronics for an autonomous robot that lives inside oil storage tanks. In my spare time I've also built a Tron-themed handheld arcade console, taught a genetic algorithm to play Pacman, and built/tuned more PID controllers than I can count.",
-			"When I'm not in the lab, you'll usually find me climbing, cooking something ambitious (results vary), fumbling through a few chords on guitar, or hunting down the best dessert in Austin.",
+			"I'm Mark Helwig, an Electrical and Computer Engineering Honors student at UT Austin, minoring in Robotics, and based in Austin, Texas, where I build robots and the systems that control them. I conduct research at the Human Centered Robotics Lab, under the guidance of Dr. Luis Sentis, and I'm currently a Locomotion Engineering Intern at Persona AI, where Dr. Conner Herron and Dr. AJ Miller guide priorities in Dr. Jerry Pratt's locomotion team.",
+			"I'm drawn to the intersection of hardware and software -- designing the embedded systems and control loops that let a robot sense the world, then training the reinforcement learning policies that decide what it does next. Recently, that involves teaching humanoid and quadruped robots to move more expressively through style-transfer RL, building a retargeting pipeline so a robotic hand can mirror a human teleoperator, and integrating 6-axis force/torque sensors so robots can detect and respond to contact rather than ignoring it.",
+			"In addition to humanoids, I spent a summer at Lockheed Martin Aeronautics automating F-35 flight data analysis, and a year at Pike Robotics designing the embedded systems and power electronics for an autonomous robot that lives inside oil storage tanks. In my spare time I've also built a Tron-themed handheld arcade console, taught a genetic algorithm to play Pacman, and built and tuned more PID controllers than I can count.",
+			"When I'm not in the lab, you'll usually find me climbing, cooking something ambitious (results vary), working through guitar chords, or hunting down the best dessert in Austin.",
 		],
 	},
 
@@ -204,7 +204,7 @@ const INFO = {
 			description:
 				"Diagnosed why the lab's aging 6-axis force/torque sensors were noisy or silent, reverse-engineered their proprietary amplifier boards, and integrated two of them into a humanoid's ankles with an algorithm that interprets contact wrenches in real time.",
 			intro:
-				"This project started as detective work: the lab had a set of old F/T sensors that were either silent or producing noisy garbage, and my job was to figure out why. Some were broken outright, the amplifier boards needed reverse-engineering, and the sensors were old enough that I had to call the manufacturer directly just to recover their calibration matrices.",
+				"This project began as a diagnostic effort: the lab had a set of aging F/T sensors that were either unresponsive or producing corrupted output, and the task was to determine why. Some were broken outright, the amplifier boards needed reverse-engineering, and the sensors were old enough that I had to call the manufacturer directly just to recover their calibration matrices.",
 			sections: [
 				{
 					title: "Purpose",
@@ -262,7 +262,7 @@ const INFO = {
 			description:
 				"A semester-long course project in ASE 479W (Aerial Robotics) at UT Austin, building a layered quadrotor autonomy stack in MATLAB and C++ that flew on a custom drone in a live cage competition, earning third place.",
 			intro:
-				"ASE 479W was the aerial robotics course at UT Austin — one semester to build a complete autonomous flight stack from the physics up, then compete with it on real hardware. The assignment structure was deliberately layered: each lab added one new piece — a dynamics simulator, a closed-loop controller, a Kalman filter, a path planner, a vision pipeline — and the final tournament asked a team of three to integrate all of it in C++ and fly it on a custom quadrotor in the lab's flight cage. The individual lab work was mine across all five assignments. For the final, I owned the 3D A* implementation and the polynomial trajectory generation engine; my teammates handled the planner architecture and the balloon-detection vision pipeline. The algorithm ran clean on real hardware, and the team placed third out of roughly fifteen.",
+				"ASE 479W is the aerial robotics course at UT Austin — one semester to build a complete autonomous flight stack from the physics up, then compete with it on real hardware. The assignment structure was deliberately layered: each lab added one new piece — a dynamics simulator, a closed-loop controller, a UKF state estimator, a path planner, a vision pipeline — and the final tournament gathered a team of three to integrate all of it in C++ and fly it on a custom quadrotor in the lab's flight cage. For the final, I owned the 3D A* implementation and the polynomial trajectory generation engine; my teammates handled the planner architecture and the balloon-detection vision pipeline. The algorithm ran clean on real hardware, and our team placed third out of roughly fifteen.",
 			sections: [
 				{
 					title: "Building the Simulator",
@@ -353,7 +353,7 @@ const INFO = {
 					items: [
 						"All structural parts were 3D printed in PLA on a QIDI Q2, with wall thickness and infill tuned per part -- thicker walls for anything threading a set screw or taking servo load, solid infill for belt tensioners",
 						"Both fingers are coupled to a single MG995 servo via a belt-and-pulley drive, with stainless steel axles in ball bearings to minimize friction",
-						"The biggest fabrication headache was shaft slippage: the round motor shaft let the belt pulley slip under load, which required machining a D-profile on a milling machine to fix",
+						"The main fabrication challenge was shaft slippage: the round motor shaft let the belt pulley slip under load, which required machining a D-profile on a milling machine to fix",
 						"Getting pulley spacing precise enough to tension the belts without flexing the axles required several reprint iterations; adjustable idler pulleys would have saved time in hindsight",
 						"Foam tape on the fingertips added grip compliance -- PLA is too slick on its own to reliably hold objects",
 						"The whole assembly is mounted on a laser-cut and engraved wooden base from Texas Inventionworks",
