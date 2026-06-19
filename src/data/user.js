@@ -68,7 +68,7 @@ const INFO = {
 	projects: [
 		{
 			slug: "aristo-hand",
-			title: "ARISTO Hand: Sensing-Driven Distal Hyperextension for Fine-Grained Manipulation",
+			title: "ARISTO Hand",
 			year: "2026",
 			category: "research",
 			image: "/projects/aristo-hand-1.jpg",
@@ -142,7 +142,7 @@ const INFO = {
 			description:
 				"Trained a Unitree G1 in IsaacLab to combine locomotion and arm manipulation through a simple, staged curriculum, then validated the policy in a Mujoco sim2sim demo of the robot walking to a table, picking up a box, and carrying it to another table.",
 			intro:
-				"Whole-body locomanipulation means a robot can move its arms independently while it's walking -- here, a Unitree G1 that walks up to a table, picks up a box, and carries it to another table. This is a separate project from my hand-retargeting work; the goal wasn't a polished manipulation pipeline, but a simple training method that could bootstrap this kind of general behavior in the first place. I built the RL training pipeline and handled the sim2sim transfer, while a labmate developed the higher-level planner that decides where the robot walks and what it reaches for.",
+				"This whole-body locomanipulation refers to a robot moving its arms independently during locomotion. A Unitree G1 learns to walk up to a table, pick up a box, and carry it to another table. The goal wasn't a polished manipulation pipeline, but a simple training method that could bootstrap this kind of general behavior. I built the RL training pipeline and handled the sim2sim transfer, while a labmate developed the higher-level planner that decides where the robot walks and what it reaches for.",
 			sections: [
 				{
 					title: "Purpose",
@@ -245,6 +245,78 @@ const INFO = {
 						"Force was correctly read within a margin of error of ~1 lb, and torque within ~0.25 Nm",
 						"The wrist sensors were never completed, as lab priorities shifted to other projects",
 						"The original goal was to use this sensing for a multi-contact planning paper on hardware, but other parts of the robot never came together, so the integration itself was never used in that context",
+					],
+				},
+			],
+		},
+
+		{
+			slug: "aerial-robotics",
+			title: "Autonomous Quadrotor Navigation: From Simulation to Competition",
+			year: "2026",
+			category: "other",
+			video: "/projects/aerial-robotics-hero-web.mp4",
+			images: ["/projects/aerial-robotics-2.png"],
+			overview:
+				"Built a complete quadrotor autonomy stack — physics simulator, cascaded PD controller, UKF state estimator, A* path planner, and vision pipeline — then competed on a real drone, placing third out of roughly fifteen teams.",
+			description:
+				"A semester-long course project in ASE 479W (Aerial Robotics) at UT Austin, building a layered quadrotor autonomy stack in MATLAB and C++ that flew on a custom drone in a live cage competition, earning third place.",
+			intro:
+				"ASE 479W was the aerial robotics course at UT Austin — one semester to build a complete autonomous flight stack from the physics up, then compete with it on real hardware. The assignment structure was deliberately layered: each lab added one new piece — a dynamics simulator, a closed-loop controller, a Kalman filter, a path planner, a vision pipeline — and the final tournament asked a team of three to integrate all of it in C++ and fly it on a custom quadrotor in the lab's flight cage. The individual lab work was mine across all five assignments. For the final, I owned the 3D A* implementation and the polynomial trajectory generation engine; my teammates handled the planner architecture and the balloon-detection vision pipeline. The algorithm ran clean on real hardware, and the team placed third out of roughly fifteen.",
+			sections: [
+				{
+					title: "Building the Simulator",
+					items: [
+						"Built a Newtonian quadrotor dynamics simulator in MATLAB from first principles — position, velocity, rotation matrix, and angular rate all propagated through the governing equations, with configurable rotor speeds and external disturbance inputs",
+						"Verified the implementation to 10⁻¹⁵ m error against reference data at every time step",
+						"Handled the singularity of the 3-1-2 Euler representation by falling back to Direction Cosine Matrices near ±90°, with a round-trip conversion tested to 10⁻¹² norm difference across randomly sampled attitudes",
+						"Extended to high fidelity: added aerodynamic drag (proportional to the cross-section perpendicular to the velocity vector) and modeled each motor as a first-order transfer function with wind-up time and voltage saturation",
+						"Open-loop circle test: derived the required rotor speed asymmetry analytically, then refined it with gradient descent — used the convergence curve of the error metric to confirm the optimizer was behaving correctly",
+					],
+				},
+				{
+					title: "Closed-Loop Control and Gain Tuning",
+					items: [
+						"Designed a cascaded PD architecture: an outer trajectory controller tracking desired position and velocity, and an inner attitude controller tracking desired orientation using multiplicative DCM error",
+						"The attitude error vector collapses a 3×3 rotation error matrix to three components that correctly represent both the axis and magnitude of the attitude deviation — more compact and unambiguous than Euler angle error",
+						"Started gain tuning analytically from the 'Goldilocks' damping ratio (ζ = 1/√2 ≈ 0.707) for a good rise time / overshoot tradeoff, then refined empirically using pseudo-step responses on each isolated axis",
+						"Automated multivariate gain tuning with two approaches: Coordinate Descent (one parameter at a time, runs 16 simulations per iteration) and SPSA (random perturbation of all parameters simultaneously, 2 simulations per iteration) — Coordinate Descent converged cleanly; SPSA failed to, because the gains are strongly coupled and random perturbation directions miss the true gradient",
+					],
+				},
+				{
+					title: "State Estimation Under Realistic Noise",
+					items: [
+						"Built simulated sensor models for GNSS (primary antenna position + a constrained baseline vector between two antennas), a pinhole camera (landmark feature vectors projected onto an image plane), and an IMU (accelerometer and rate-gyro with first-order Gauss-Markov drift biases on both)",
+						"Solved Wahba's problem via SVD to initialize the attitude estimate from pairs of known vectors — tested over 100 random attitude/vector configurations, max DCM error under 10⁻¹² in every case",
+						"Built and integrated an Unscented Kalman Filter running at IMU rate, fusing lower-frequency GNSS and camera updates; Euler error angles kept the 3-1-2 singularity safely out of reach as long as the decimation rate was reasonable",
+						"Steady-state position standard deviation across 10 random seeds: 5–10 mm — tight enough that shutting the camera off entirely had no meaningful effect on tracking, because the GNSS baseline vector and gravity vector (inferred from IMU) together kept the state fully observable",
+					],
+				},
+				{
+					title: "Path Planning: A* to Polynomial Trajectories",
+					items: [
+						"Compared DFS, Dijkstra's, and A* with three heuristics (zero, distance-from-start, Euclidean) on 2D obstacle grids — confirmed A* with Euclidean distance is both optimal and faster than Dijkstra's since it explores fewer nodes",
+						"Added polynomial trajectory smoothing to convert discrete A* waypoints into dynamically feasible trajectories, explored minimizing different derivative orders (position through snap), and tested how arrival time constraints and waypoint density affect the resulting path shape",
+						"Full-stack integration test: ran A* on an obstacle grid, smoothed the result with the polynomial solver, then simulated the drone tracking the trajectory with the Lab 2 cascaded PD controller — tracking error dropped below 10 cm after an initial transient at the start of the path",
+					],
+				},
+				{
+					title: "Finding the Balloons",
+					items: [
+						"Implemented 3D feature localization via structured computing: triangulated landmark positions from two or more camera views using a least-squares formulation that exploits the cross-product property of homogeneous image coordinates — average error under 2.5 cm across 837 randomly generated in-field-of-view test points",
+						"Integrated localization into the simulated flight loop; wider image spacing (0.75s) significantly outperformed tight clustering (0.1s) because the larger baseline angle between views improved triangulation geometry",
+						"Translated the MATLAB pipeline to C++ and paired it with a balloon-detection algorithm: HSV color masking → morphological opening and closing → contour extraction → geometric shape checks on area, aspect ratio, circularity, solidity, and extent — localization error under 10 cm for both red and blue balloons against known ground truth",
+					],
+				},
+				{
+					title: "The Tournament: 3D A*, RANSAC, and Real Hardware",
+					items: [
+						"Extended A* to 3D voxels with 26-neighbor connectivity, 0.3 m grid resolution, and 0.7 m obstacle inflation — with fallback inflation tiers for maps dense enough to block all paths at the conservative margin",
+						"Added Ramer-Douglas-Peucker pruning to reduce the staircase-heavy A* output to a cleaner waypoint sequence, then used P4 polynomial trajectory generation with greedy bisection-based timing optimization to minimize flight time on each segment",
+						"Applied RANSAC to the structure computer to eliminate false positives from decoy balloons and background objects — the blue balloon's localization error dropped from 120 cm without RANSAC to 5.7 cm with it; the red balloon went from 28.4 cm to 2.5 cm",
+						"Wind robustness testing in simulation: completed the course reliably through mild and stiff gusts (56–63 s); intense wind pushed the drone into an obstacle",
+						"On tournament day, the algorithm flew clean on the custom quadrotor in the flight cage — no drama, no corrections needed — and the team placed third out of roughly fifteen",
+						"My contributions to the final: 3D A* implementation and the P4 polynomial trajectory generation engine",
 					],
 				},
 			],

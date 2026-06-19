@@ -26,8 +26,14 @@ const ProjectDetail = () => {
 		return <Notfound />;
 	}
 
+	const sectionImages = project.sections
+		? project.sections.flatMap((s) => s.images || [])
+		: [];
+
 	const galleryImages = project.images
-		? project.images.filter((image) => image !== project.image)
+		? project.images.filter(
+				(image) => image !== project.image && !sectionImages.includes(image)
+		  )
 		: [];
 
 	const galleryVideos = project.videos
@@ -61,14 +67,14 @@ const ProjectDetail = () => {
 									{project.year}
 								</div>
 							)}
-							<div className="title project-detail-title">
+							<div className="project-detail-title">
 								{project.title}
 							</div>
-							<div className="subtitle project-detail-description">
+							<div className="project-detail-description">
 								{project.description}
 							</div>
 							{project.intro && (
-								<div className="subtitle project-detail-intro">
+								<div className="project-detail-intro">
 									{project.intro}
 								</div>
 							)}
@@ -127,6 +133,18 @@ const ProjectDetail = () => {
 											)
 										)}
 									</ul>
+									{section.images && section.images.length > 0 && (
+										<div className="project-detail-section-images">
+											{section.images.map((image, i) => (
+												<img
+													key={i}
+													className="project-detail-section-image"
+													src={image}
+													alt={section.title}
+												/>
+											))}
+										</div>
+									)}
 								</div>
 							))}
 						</div>
