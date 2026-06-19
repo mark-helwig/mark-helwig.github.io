@@ -788,45 +788,45 @@ const INFO = {
 				{
 					topic: "Robotics & Control",
 					courses: [
-						{ code: "ECE 319H", name: "Intro to Embedded Systems (Honors)" },
-						{ code: "RBT 350", name: "Gateway to Robotics" },
-						{ code: "ECE 362K", name: "Intro to Automatic Control" },
 						{ code: "ME 380R", name: "Robot Mechanism Design" },
 						{ code: "ASE 387P", name: "Aerial Robotics" },
+						{ code: "ECE 362K", name: "Intro to Automatic Control" },
+						{ code: "RBT 350", name: "Gateway to Robotics" },
+						{ code: "ECE 319H", name: "Intro to Embedded Systems (Honors)" },
 					],
 				},
 				{
 					topic: "Signal Processing",
 					courses: [
-						{ code: "ECE 313", name: "Linear Systems and Signals" },
-						{ code: "ECE 351H", name: "Probability and Random Processes (Honors)" },
-						{ code: "ECE 351M", name: "Digital Signal Processing" },
 						{ code: "ECE 445S", name: "Real-Time Digital Signal Processing Lab" },
+						{ code: "ECE 351M", name: "Digital Signal Processing" },
+						{ code: "ECE 351H", name: "Probability and Random Processes (Honors)" },
+						{ code: "ECE 313", name: "Linear Systems and Signals" },
 					],
 				},
 				{
 					topic: "Algorithms & Software",
 					courses: [
-						{ code: "ECE 306", name: "Introduction to Computing" },
-						{ code: "ECE 312H", name: "Software Design and Implementation I (Honors)" },
 						{ code: "ECE 360C", name: "Algorithms" },
+						{ code: "ECE 312H", name: "Software Design and Implementation I (Honors)" },
+						{ code: "ECE 306", name: "Introduction to Computing" },
 					],
 				},
 				{
 					topic: "Circuits & Electronics",
 					courses: [
-						{ code: "ECE 302H", name: "Intro to Electrical Engineering (Honors)" },
 						{ code: "ECE 411", name: "Circuit Theory" },
 						{ code: "ECE 316", name: "Digital Logic Design" },
+						{ code: "ECE 302H", name: "Intro to Electrical Engineering (Honors)" },
 					],
 				},
 				{
 					topic: "Mathematics",
 					courses: [
+						{ code: "M 340L", name: "Matrices and Matrix Calculations" },
+						{ code: "M 427J", name: "Differential Equations with Linear Algebra" },
 						{ code: "M 427L", name: "Advanced Calculus for Applications II (Honors)" },
 						{ code: "M 325K", name: "Discrete Mathematics" },
-						{ code: "M 427J", name: "Differential Equations with Linear Algebra" },
-						{ code: "M 340L", name: "Matrices and Matrix Calculations" },
 					],
 				},
 			],
