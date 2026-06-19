@@ -6,6 +6,7 @@ import {
 	faMailBulk,
 	faFileLines,
 	faChevronRight,
+	faGraduationCap,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -121,6 +122,17 @@ const Homepage = () => {
 							>
 								<FontAwesomeIcon
 									icon={faLinkedin}
+									className="homepage-social-icon"
+								/>
+							</a>
+							<a
+								href={INFO.socials.scholar}
+								target="_blank"
+								rel="noreferrer"
+								aria-label="Google Scholar"
+							>
+								<FontAwesomeIcon
+									icon={faGraduationCap}
 									className="homepage-social-icon"
 								/>
 							</a>

@@ -10,6 +10,7 @@ const INFO = {
 	socials: {
 		github: "https://github.com/mark-helwig",
 		linkedin: "https://www.linkedin.com/in/mark-l-helwig/",
+		scholar: "https://scholar.google.com/citations?user=xF5MjpYAAAAJ&hl=en&oi=ao",
 	},
 
 	homepage: {
@@ -309,11 +310,11 @@ const INFO = {
 			title: "3 DOF Articulated Robot Distance Tracking",
 			year: "2025",
 			category: "other",
-			image: "/projects/dof-tracking-2.png",
-			images: [
-				"/projects/dof-tracking-2.png",
-				"/projects/dof-tracking-1.png",
-			],
+			video: "/projects/dof-tracking-1.mp4",
+			videos: ["/projects/dof-tracking-1.mp4"],
+			images: ["/projects/dof-tracking-2.png"],
+			intro:
+				"This was a course project: build a 3D-printed articulated robot arm that tracks an object held in front of it at a fixed distance — pull something closer and the arm extends; step back and it follows. The target could be anything in range: a hand, a notebook, a person. Distance came from an ultrasonic sensor read by an Arduino, which fed that data to a PyBullet controller that computed where the joints needed to go. The part I found most interesting was working out the inverse kinematics by hand — rather than reaching for a solver, I derived the IK using the Rodrigues rotation formula, which simplifies cleanly for a three-joint articulated chain and kept the math transparent.",
 			overview:
 				"A 3D-printed robotic arm that uses inverse kinematics to track an object at a fixed distance.",
 			description:
@@ -771,7 +772,7 @@ const INFO = {
 			date: "May 2025 - Aug 2025",
 			website: "https://www.lockheedmartin.com/en-us/who-we-are/business-areas/aeronautics.html",
 			desc:
-				"Developed and owned a Python app for automation of sustainment engineering interpretation of F-35 flight data across all Mission System subsystems, improving process workflow by 92%. Created, maintained, and documented a codebase combining a GUI, automated database interaction (SQL), and automated data visualization. As the only intern on a team of full-time engineers, I was proud to see the tool adopted by multiple other teams by the end of the internship.",
+				"Developed and owned a Python app for automation of sustainment engineering interpretation of F-35 flight data across all Mission System subsystems, improving process workflow by 92%. Created, maintained, and documented a codebase combining a GUI, automated database interaction (SQL), and automated data visualization. By the end of the internship, the tool had been picked up and recommended for use by multiple teams beyond my own.",
 			sections: [
 				{
 					title: "Automating F-35 Flight Data Analysis",
@@ -786,7 +787,7 @@ const INFO = {
 				{
 					title: "Adoption Across Teams",
 					description:
-						"As the only intern on a large engineering team, I was proud to see the app adopted beyond my own team -- by the end of the internship, it had been recommended for use by multiple other teams I wasn't even part of.",
+						"The app ended up extending well beyond the team I was embedded with -- by the end of the internship, it had been recommended for use by multiple other teams across the division.",
 				},
 			],
 		},
