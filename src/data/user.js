@@ -250,6 +250,61 @@ const INFO = {
 		},
 
 		{
+			slug: "compliant-finger-mechanism",
+			title: "Compliant Finger Mechanism",
+			year: "2026",
+			category: "other",
+			image: "/projects/compliant-finger-1.png",
+			images: ["/projects/compliant-finger-1.png"],
+			videos: ["/projects/compliant-finger-project.mp4"],
+			website: "https://cloud.wikis.utexas.edu/wiki/spaces/RMD/pages/996081690/19+-+Compliant+Finger+Mechanism",
+			overview:
+				"A two-fingered under-actuated gripper that uses a torsional spring to switch between two four-bar linkages, enabling adaptive grasping with a single servo.",
+			description:
+				"A 3D-printed, belt-driven gripper with two compliant fingers that use a torsional spring to transition between two four-bar linkage configurations -- grasping flat objects as a rigid unit and wrapping around curved ones -- all driven by a single servo.",
+			intro:
+				"Robotic grippers face a familiar tradeoff: simple designs are reliable but shape-locked, while fully dexterous hands need a motor at every joint. This was the semester capstone for Robot Mechanism Design (ME 380R) at UT Austin -- design a finger that gets adaptive grasping behavior from a single actuator, using linkage geometry instead of extra motors. The mechanism is a five-bar linkage with a torsional spring at the proximal joint. Before contact, the spring is rigid and the whole finger sweeps as a single unit. Once the proximal segment contacts an object, the spring deflects, shifting into a second four-bar configuration that lets the distal segment continue rotating and wrap around the object.",
+			sections: [
+				{
+					title: "The Mechanism",
+					items: [
+						"Structurally a five-bar linkage, but the torsional spring at the proximal joint lets the motion be analyzed as two sequentially active four-bar mechanisms",
+						"In free space, the spring is rigid -- the actuator drives the whole finger to rotate toward the object as one unit (first four-bar)",
+						"When the proximal segment contacts an object and stalls, the spring begins to deflect, transitioning into the second four-bar configuration and letting the distal segment continue wrapping around the object",
+						"Both configurations have one degree of freedom (verified via the Gruebler equation), so a single actuator drives the entire grasp sequence",
+						"Position analysis on each four-bar separately guided link length selection and helped avoid toggle points throughout the motion range",
+					],
+				},
+				{
+					title: "Building It",
+					items: [
+						"All structural parts were 3D printed in PLA on a QIDI Q2, with wall thickness and infill tuned per part -- thicker walls for anything threading a set screw or taking servo load, solid infill for belt tensioners",
+						"Both fingers are coupled to a single MG995 servo via a belt-and-pulley drive, with stainless steel axles in ball bearings to minimize friction",
+						"The biggest fabrication headache was shaft slippage: the round motor shaft let the belt pulley slip under load, which required machining a D-profile on a milling machine to fix",
+						"Getting pulley spacing precise enough to tension the belts without flexing the axles required several reprint iterations; adjustable idler pulleys would have saved time in hindsight",
+						"Foam tape on the fingertips added grip compliance -- PLA is too slick on its own to reliably hold objects",
+						"The whole assembly is mounted on a laser-cut and engraved wooden base from Texas Inventionworks",
+					],
+				},
+				{
+					title: "Control",
+					items: [
+						"An Arduino reads the joystick Y-axis every 20ms and maps deflection to a velocity command for the servo",
+						"The servo sweeps 0–90° in 1.5°/iteration increments, with a deadzone to allow fine positional control without drift",
+						"A motor driver steps the 9V battery down to 5V for the microcontroller, servo, and joystick",
+					],
+				},
+				{
+					title: "Results",
+					items: [
+						"The mechanism reliably demonstrated both grasping modes: the fingers close as a unit on flat objects (watch cushion), and the distal segments wrap around curved ones (tennis ball, rubber duck)",
+						"The torsional spring correctly triggered the second four-bar configuration on contact without any active sensing -- the compliance is purely mechanical",
+					],
+				},
+			],
+		},
+
+		{
 			slug: "3-dof-articulated-robot-distance-tracking",
 			title: "3 DOF Articulated Robot Distance Tracking",
 			year: "2025",
@@ -788,8 +843,8 @@ const INFO = {
 				{
 					topic: "Robotics & Control",
 					courses: [
-						{ code: "ME 380R", name: "Robot Mechanism Design" },
 						{ code: "ASE 387P", name: "Aerial Robotics" },
+						{ code: "ME 380R", name: "Robot Mechanism Design" },
 						{ code: "ECE 362K", name: "Intro to Automatic Control" },
 						{ code: "RBT 350", name: "Gateway to Robotics" },
 						{ code: "ECE 319H", name: "Intro to Embedded Systems (Honors)" },
