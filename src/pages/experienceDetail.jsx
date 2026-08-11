@@ -95,9 +95,22 @@ const ExperienceDetail = () => {
 												{section.title}
 											</div>
 										)}
-										<div className="experience-detail-description">
-											{section.description}
-										</div>
+										{section.description && (
+											<div className="experience-detail-description">
+												{section.description}
+											</div>
+										)}
+										{section.bullets && (
+											<ul className="experience-detail-bullets">
+												{section.bullets.map(
+													(bullet, bulletIndex) => (
+														<li key={bulletIndex}>
+															{bullet}
+														</li>
+													)
+												)}
+											</ul>
+										)}
 									</div>
 								))}
 							</div>

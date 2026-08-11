@@ -796,12 +796,17 @@ const INFO = {
 			date: "May 2026 - Present",
 			website: "https://persona.ai/",
 			desc:
-				"Engineering behaviors across multiple humanoid hardware platforms using Nvidia's IsaacLab, and developing a pipeline for logging and processing hardware and simulation data.",
+				"Developing, training, and deploying high-contact and locomotion behaviors for harness-free deployment across three robot hardware platforms. Building accurate, compute-efficient contact models to reduce the RL sim2real gap, owning third-party hardware integration with the company's control framework, and debugging hardware and software faults on company robots.",
 			sections: [
 				{
 					title: "Engineering Humanoid Behaviors",
-					description:
-						"Details coming soon — I'll share more about this role once I'm able to.",
+					bullets: [
+						"Developed, trained, and deployed high-contact behaviors for harness-free robot deployment.",
+						"Developed locomotion policies and deployed on three different robot hardware platforms.",
+						"Built accurate, compute-efficient contact models of robots to reduce the RL sim2real gap.",
+						"Owned the integration of third-party hardware with the company's control framework.",
+						"Debugged hardware and software faults on company robots.",
+					],
 				},
 			],
 		},
