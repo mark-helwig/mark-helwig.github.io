@@ -22,7 +22,7 @@ const INFO = {
 	about: {
 		title: "I’m Mark Helwig. I'm based in Austin, Texas, where I build robots and the systems that control them.",
 		description: [
-			"I'm Mark Helwig, an Electrical and Computer Engineering Honors student at UT Austin, minoring in Robotics, and based in Austin, Texas, where I build robots and the systems that control them. I conduct research at the Human Centered Robotics Lab, under the guidance of Dr. Luis Sentis, and I'm currently a Locomotion Engineering Intern at Persona AI, where Dr. Conner Herron and Dr. AJ Miller guide priorities in Dr. Jerry Pratt's locomotion team.",
+			"I'm Mark Helwig, an Electrical and Computer Engineering Honors student at UT Austin, minoring in Robotics, and based in Austin, Texas, where I build robots and the systems that control them. I conduct research at the Human Centered Robotics Lab, under the guidance of Dr. Luis Sentis, and this past summer I was a Locomotion Engineering Intern at Persona AI, where Dr. Conner Herron and Dr. AJ Miller guided priorities in Dr. Jerry Pratt's locomotion team.",
 			"I'm drawn to the intersection of hardware and software -- designing the embedded systems and control loops that let a robot sense the world, then training the reinforcement learning policies that decide what it does next. Recently, that involves teaching humanoid and quadruped robots to move more expressively through style-transfer RL, building a retargeting pipeline so a robotic hand can mirror a human teleoperator, and integrating 6-axis force/torque sensors so robots can detect and respond to contact rather than ignoring it.",
 			"In addition to humanoids, I spent a summer at Lockheed Martin Aeronautics automating F-35 flight data analysis, and a year at Pike Robotics designing the embedded systems and power electronics for an autonomous robot that lives inside oil storage tanks. In my spare time I've also built a Tron-themed handheld arcade console, taught a genetic algorithm to play Pacman, and built and tuned more PID controllers than I can count.",
 			"When I'm not in the lab, you'll usually find me climbing, cooking something ambitious (results vary), working through guitar chords, or hunting down the best dessert in Austin.",
@@ -47,21 +47,14 @@ const INFO = {
 			"Undergraduate study in electrical and computer engineering, with a focus on robotics, signal processing, and control systems.",
 	},
 
-	// Teaser cards for in-progress / undisclosed projects. Shown on the homepage
-	// and projects page until details are ready to publish.
+	// Teaser cards for in-progress projects. Shown on the homepage and projects
+	// page until they are finished and moved into `projects` with their own page.
 	projectTeasers: [
 		{
-			title: "Discriminator-Free Style Transfer for Humanoid Locomotion (RL)",
+			title: "Embodiment-Agnostic Gain Selection for Humanoids",
 			status: "In Progress",
 			description:
-				"Training a Unitree G1 in IsaacLab to walk with a distinct style, and to carry that style onto new terrain -- like a slope -- without retraining for new rewards. I'm building the full pipeline myself: pretraining models, running the RL sims, and testing different model/algorithm combinations.",
-		},
-
-		{
-			title: "Hand Retargeting for Teleoperation of a Robotic Arm and Hand",
-			status: "In Progress",
-			description:
-				"Building a live teleoperation pipeline that senses how a human bends their fingers and retargets that motion -- including hyperextension -- onto the ARISTO hand. I'm exploring two approaches in parallel: camera-based hand-pose estimation and a motion-capture glove, with early, noisy results from the vision pipeline so far.",
+				"PD gains are usually tuned by hand for every new robot, and that tuning is one of the things that keeps an RL policy from carrying over to a new body. I'm leading research on choosing gains in a way that doesn't depend on the embodiment, with the longer-term goal of letting the RL algorithm make more of these decisions itself. No results to share yet.",
 		},
 	],
 
@@ -121,7 +114,7 @@ const INFO = {
 					items: [
 						"After the redesign, the board reliably powers and commands all eight motors through ROS2",
 						"Seeing the hand move under its own control for the first time, after months of PCB and firmware work, was the project's biggest milestone",
-						"This work is part of the ARISTO Hand paper, which is headed to a conference",
+						"This work is part of the ARISTO Hand paper, accepted to IEEE/ASME AIM 2026",
 					],
 				},
 			],
@@ -140,9 +133,9 @@ const INFO = {
 			overview:
 				"RL training and sim2sim transfer for a Unitree G1 that learns to walk to a table, pick up a box with its arms, and walk again while carrying it.",
 			description:
-				"Trained a Unitree G1 in IsaacLab to combine locomotion and arm manipulation through a simple, staged curriculum, then validated the policy in a Mujoco sim2sim demo of the robot walking to a table, picking up a box, and carrying it to another table.",
+				"Trained Unitree G1 and R1 humanoids in Isaac Lab to combine locomotion and arm manipulation by merging velocity tracking and end-effector tracking under a workspace curriculum, then validated the policies in a MuJoCo sim2sim demo of the robot walking to a table, picking up a box, and carrying it to another table.",
 			intro:
-				"This whole-body locomanipulation refers to a robot moving its arms independently during locomotion. A Unitree G1 learns to walk up to a table, pick up a box, and carry it to another table. The goal wasn't a polished manipulation pipeline, but a simple training method that could bootstrap this kind of general behavior. I built the RL training pipeline and handled the sim2sim transfer, while a labmate developed the higher-level planner that decides where the robot walks and what it reaches for.",
+				"This whole-body locomanipulation refers to a robot moving its arms independently during locomotion. A Unitree G1 learns to walk up to a table, pick up a box, and carry it to another table. The goal wasn't a polished manipulation pipeline, but a simple training method that could bootstrap this kind of general behavior. We kept the design deliberately simple so we could iterate quickly against a tight deadline. I owned the RL training and the sim2sim transfer from Isaac Lab to MuJoCo, and tuned the policies across the embodiment difference between the G1 and the R1, while a labmate built the higher-level planner that sequences the task.",
 			sections: [
 				{
 					title: "Purpose",
@@ -154,9 +147,9 @@ const INFO = {
 				{
 					title: "Requirements",
 					items: [
-						"Train the policy in IsaacLab on a Unitree G1",
+						"Train the policies in Isaac Lab on the Unitree G1 and R1",
 						"Policy must locomote at varying speeds while independently positioning its hands within its local workspace",
-						"Trained policy must transfer to a Mujoco sim2sim environment for validation",
+						"Trained policies must transfer to a MuJoCo sim2sim environment for validation",
 						"Target objects are large and light, like an empty box -- precision grasping wasn't a goal",
 					],
 				},
@@ -166,15 +159,19 @@ const INFO = {
 						"Combining locomotion and arm manipulation into a single policy without making the training overly complex",
 						"The hand-positioning task is target-based with no force or contact feedback, so manipulation accuracy is inherently coarse",
 						"Coordinating with a separate, higher-level planner that issues the walk and reach targets",
-						"Confirming the trained policy's behavior held up after sim2sim transfer from IsaacLab to Mujoco",
+						"Confirming the trained policies' behavior held up after sim2sim transfer from Isaac Lab to MuJoCo",
+						"Tuning the policies across the embodiment difference between the G1 and the R1",
+						"Lifting the box without crushing it, with no force or contact sensing in the loop",
 					],
 				},
 				{
 					title: "Solutions",
 					items: [
-						"Built a staged curriculum: first taught the policy to walk, then to walk at different speeds, then layered on a hand-positioning task driven by a position target within its reachable workspace",
-						"Kept the manipulation objective intentionally simple -- position tracking only -- so it could be learned on top of the existing locomotion policy without retraining from scratch",
-						"Owned the RL training pipeline and sim2sim transfer, working alongside a labmate's higher-level planner that issued the walk and reach commands",
+						"Trained end-effector tracking and velocity tracking policies in parallel, then combined them by keeping the end-effector tracking reward in the robot's local frame",
+						"During training, the commanded wrist positions vary at a frequency set by a curriculum, inside a reachable workspace that is computed online while the robot is commanded to walk",
+						"Kept the manipulation objective intentionally naive -- position tracking only, no hand-designed manipulation rewards -- so it could be learned quickly",
+						"To lift the box without crushing it, relied on the arm PD gains to set the grip force, with the desired hand positions sitting slightly inside the box",
+						"Owned the RL training pipeline, the sim2sim transfer, and the policy tuning across both humanoids, working alongside a labmate's higher-level planner that issued the walk and reach commands",
 					],
 				},
 				{
@@ -182,8 +179,130 @@ const INFO = {
 					items: [
 						"Demonstrated the full task in sim2sim: the G1 walks to a table, picks up a box with its arms, and walks again while carrying it",
 						"The position-target approach to hand placement reached about 5cm accuracy within the reachable workspace -- enough for large, light objects like the test box",
-						"Showed that a simple, staged curriculum is enough to bootstrap whole-body locomanipulation without hand-designed manipulation rewards",
-						"A labmate later carried the approach further, verifying it on the Unitree R1 humanoid in simulation",
+						"Showed that a simple, curriculum-driven approach is enough to bootstrap whole-body locomanipulation without hand-designed manipulation rewards",
+						"The R1 existed only as a simulation model, so results on it are verified in MuJoCo; hardware testing is planned now that the lab has the robot",
+					],
+				},
+			],
+		},
+
+		{
+			slug: "style-transfer-humanoid-locomotion",
+			title: "Discriminator-Free Style Transfer for Humanoid Locomotion (RL)",
+			year: "Jan - Apr 2026",
+			image: "/projects/style-transfer-1.png",
+			images: ["/projects/style-transfer-1.png"],
+			category: "research",
+			overview:
+				"A discriminator-free approach to RL style transfer for the Unitree G1: a pre-trained motion model predicts what comes next, and the reward comes from how closely the robot's own motion matches.",
+			description:
+				"Implemented a discriminator-free style-transfer pipeline for a Unitree G1 in Isaac Lab, using a pre-trained model of human motion in place of an adversarial discriminator. The project moved to a team when I left for my Persona AI internship, and the method was later verified.",
+			intro:
+				"Human-data-driven methods like Adversarial Motion Priors (AMP) teach a robot a style by training a discriminator to tell its motion apart from human motion data. Discriminators are hard to tune and can be unstable and brittle, so this project explored an alternative: pre-train a model of human motion, then reward the robot for moving in a way that model finds predictable. I was responsible for the implementation from January until I left for Persona AI in May, when the work passed to a team.",
+			sections: [
+				{
+					title: "Purpose",
+					items: [
+						"Teach a Unitree G1 to walk with a human-like, expressive style learned from human motion data",
+						"Do it without a discriminator, the component that methods like Adversarial Motion Priors (AMP) use and that is notoriously hard to tune",
+						"Carry the learned style onto new terrain, like a slope, without designing new reward functions",
+					],
+				},
+				{
+					title: "Requirements",
+					items: [
+						"Train in Isaac Lab on a Unitree G1 with PPO",
+						"Use the LAFAN1 human motion dataset, retargeted onto the G1, as the source of style",
+						"No discriminator in the training loop",
+						"Compare the results against baseline walking policies and human-data-driven methods like AMP",
+					],
+				},
+				{
+					title: "Challenges",
+					items: [
+						"Style can only help once the robot already walks reasonably: when RL starts, the model is encoding and predicting garbage, so the style reward is garbage too",
+						"The style reward didn't saturate anywhere near its maximum, and it wasn't clearly tied to the quality of the pre-trained model",
+						"Pre-trained models could fail invisibly, with nothing in the Isaac Lab terminal to show it, and one bug should have crashed every training run but didn't",
+						"RL training was slow, and there was no agreed way to measure how much 'style' a policy had",
+					],
+				},
+				{
+					title: "Solutions",
+					items: [
+						"Pre-trained a model of human motion on the retargeted LAFAN1 data: an encoder compressing windows of joint motion about 4x, plus a predictor of the next step in that compressed space, first a residual model and an MLP, then a transformer that predicts 24 frames at once",
+						"Used the error between the predicted motion and the robot's actual motion as the style reward, so no discriminator is needed",
+						"Bootstrapped the style reward on top of a vanilla G1 walking policy, comparing a discrete switch-on against a linear ramp-up",
+						"Designed a saturation test to check whether the prediction-based reward could work at all before committing to more training",
+					],
+				},
+				{
+					title: "Conclusion",
+					items: [
+						"I produced many walking policies, but none differed from the baseline policies in a useful way",
+						"My last saturation test failed because of a coding bug, and I left for my Persona AI internship before I could track down what needed to change",
+						"The project moved to a team after I left. They later verified the method, and the resulting walking motion was more expressive. I don't know what they changed",
+						"My biggest takeaway was a working knowledge of human-data-driven methods like AMP, the approach we were measuring this work against",
+					],
+				},
+			],
+		},
+
+		{
+			slug: "hand-retargeting-teleoperation",
+			title: "Hand Retargeting for Teleoperation of a Robotic Arm and Hand",
+			year: "2026",
+			video: "/projects/hand-retargeting-1.webm",
+			videos: ["/projects/hand-retargeting-1.webm"],
+			category: "research",
+			overview:
+				"A real-time retargeting pipeline that maps a human hand, tracked by a camera, onto the three-fingered ARISTO hand, including its hyperextension.",
+			description:
+				"Built a real-time teleoperation pipeline that tracks a human hand with MediaPipe, computes 3D finger angles, and maps them onto the three-fingered ARISTO hand, with a pinch mode that unlocks its hyperextension. Results were in simulation.",
+			intro:
+				"Teleoperating a robotic hand means turning how a person's fingers move into commands for a hand that is built differently, and ARISTO has fewer fingers and can hyperextend, which a human hand can't. I designed and implemented my own retargeting pipeline for it: MediaPipe finds landmarks on my hand, and I calculate 3D angles for the thumb, index, and middle fingers and map them onto ARISTO. The theory, implementation, and validation were all mine, and I built it in parallel with a Facebook Research retargeting algorithm (GeoRT) for comparison.",
+			sections: [
+				{
+					title: "Purpose",
+					items: [
+						"Let a person teleoperate the three-fingered ARISTO hand in real time, using their own hand",
+						"Keep the motion intuitive for useful actions like grasping and pinching, while making good use of the range of motion of both hands",
+						"Take advantage of ARISTO's distal hyperextension, a motion a human hand can't do",
+					],
+				},
+				{
+					title: "Requirements",
+					items: [
+						"Run live, from a camera, with no special wearable",
+						"Map a five-fingered human hand onto three fingers: the thumb, index, and middle",
+						"Handle the kinematic differences between the two hands, most of all hyperextension",
+					],
+				},
+				{
+					title: "Challenges",
+					items: [
+						"Hyperextension was the biggest difference between ARISTO and a human hand, and driving a non-human range of motion from a human hand is inherently awkward",
+						"A single camera collapses depth, which makes finger angles noisy and limits how well the mapping can capture a pinch",
+						"Facebook Research's GeoRT, which I tried in parallel, had a hard time transferring meaningful motion onto a hand as non-human as ARISTO",
+						"Middle-finger pinch never worked well",
+					],
+				},
+				{
+					title: "Solutions",
+					items: [
+						"Used Google MediaPipe to find landmarks on my hand, then calculated 3D joint angles for the thumb, index, and middle fingers and mapped them onto ARISTO's three fingers",
+						"Kept the mapping simple and geometric, ignoring a few joints and, for the thumb, the metacarpal motor, rather than learning it",
+						"Handled hyperextension by switching between two modes: a normal retargeting mode and a pinch mode that unlocks hyperextension",
+						"Ran GeoRT alongside the geometric pipeline as a comparison, and the geometric pipeline gave more promising results",
+					],
+				},
+				{
+					title: "Conclusion",
+					items: [
+						"In simulation, index pinch, individual finger movement, full close, and cylinder grabs all worked, and basic hyperextension worked in the pinch orientation, enough to pick up thin objects between the tactile sensors",
+						"Responsiveness was great, but controllability and dexterity left a lot to be desired",
+						"All results were in simulation. I never ran it on the real hand",
+						"A motion-capture glove arrived shortly before I left, but I never got to integrate it. The project stopped when I left for Persona AI, and it hasn't been continued or included in any papers that I know of",
+						"My takeaway: not every method has to generalize to every morphology, and solving a problem for one hand can show how to extend to new capabilities",
 					],
 				},
 			],
@@ -260,9 +379,9 @@ const INFO = {
 			overview:
 				"Built a complete quadrotor autonomy stack — physics simulator, cascaded PD controller, UKF state estimator, A* path planner, and vision pipeline — then competed on a real drone, placing third out of roughly fifteen teams.",
 			description:
-				"A semester-long course project in ASE 479W (Aerial Robotics) at UT Austin, building a layered quadrotor autonomy stack in MATLAB and C++ that flew on a custom drone in a live cage competition, earning third place.",
+				"A semester-long course project in ASE 387P (Aerial Robotics) at UT Austin, building a layered quadrotor autonomy stack in MATLAB and C++ that flew on a custom drone in a live cage competition, earning third place.",
 			intro:
-				"ASE 479W is the aerial robotics course at UT Austin — one semester to build a complete autonomous flight stack from the physics up, then compete with it on real hardware. The assignment structure was deliberately layered: each lab added one new piece — a dynamics simulator, a closed-loop controller, a UKF state estimator, a path planner, a vision pipeline — and the final tournament gathered a team of three to integrate all of it in C++ and fly it on a custom quadrotor in the lab's flight cage. For the final, I owned the 3D A* implementation and the polynomial trajectory generation engine; my teammates handled the planner architecture and the balloon-detection vision pipeline.",
+				"ASE 387P is the aerial robotics course at UT Austin — one semester to build a complete autonomous flight stack from the physics up, then compete with it on real hardware. The assignment structure was deliberately layered: each lab added one new piece — a dynamics simulator, a closed-loop controller, a UKF state estimator, a path planner, a vision pipeline — and the final tournament gathered a team of three to integrate all of it in C++ and fly it on a custom quadrotor in the lab's flight cage. For the final, I owned the 3D A* implementation and the polynomial trajectory generation engine; my teammates handled the planner architecture and the balloon-detection vision pipeline.",
 			fullReports: "https://github.com/mark-helwig/aerial-robotics-labs",
 			sections: [
 				{
@@ -791,12 +910,13 @@ const INFO = {
 		{
 			slug: "persona-ai",
 			img: "/personaai_dark.jpg",
+			image: "/experience/persona-ai-1.jpg",
 			role: "Locomotion Engineering Intern",
 			company: "Persona AI",
-			date: "May 2026 - Present",
+			date: "May 2026 - Aug 2026",
 			website: "https://persona.ai/",
 			desc:
-				"Developing, training, and deploying high-contact and locomotion behaviors for harness-free deployment across three robot hardware platforms. Building accurate, compute-efficient contact models to reduce the RL sim2real gap, owning third-party hardware integration with the company's control framework, and debugging hardware and software faults on company robots.",
+				"Developed, trained, and deployed high-contact and locomotion behaviors for harness-free deployment across three robot hardware platforms. Built accurate, compute-efficient contact models to reduce the RL sim2real gap, owned third-party hardware integration with the company's control framework, and debugged hardware and software faults on company robots.",
 			sections: [
 				{
 					title: "Engineering Humanoid Behaviors",
@@ -820,27 +940,32 @@ const INFO = {
 			date: "Sep 2024 - Present",
 			website: "https://sites.utexas.edu/hcrl/",
 			desc:
-				"Researching discriminator-free style transfer for expressive locomotion in humanoids and quadrupeds using RL in IsaacLab to deploy on hardware. Developing a custom retargeting algorithm for teleoperation of a robotic arm and hand, rudimentary whole-body locomanipulation for the Unitree G1, embedded systems (CAN hardware/firmware, ROS2, impedance control) for an imitation-learning-controlled robotic hand, and 6-axis force/torque sensing in humanoid limbs for multi-contact planning.",
+				"Researching embodiment-agnostic PD gain selection, and discriminator-free style transfer for expressive locomotion in humanoids and quadrupeds using RL in Isaac Lab to deploy on hardware. Developed a custom retargeting algorithm for teleoperation of a robotic arm and hand, basic whole-body locomanipulation for the Unitree G1 and R1 with sim2sim results, embedded systems (CAN hardware/firmware, ROS2, impedance control) for an imitation-learning-controlled robotic hand, and 6-axis force/torque sensing in humanoid limbs for multi-contact planning.",
 			sections: [
+				{
+					title: "Embodiment-Agnostic Gain Selection",
+					description:
+						"Leading research on choosing PD gains in a way that doesn't depend on the robot's embodiment, so that more of those decisions can eventually be made by the RL algorithm itself and a policy can carry over to a new body. This is ongoing, with no results to share yet.",
+				},
 				{
 					title: "Researching Expressive Robot Locomotion",
 					description:
-						"Building an RL pipeline in IsaacLab that teaches a Unitree G1 to walk with a distinct style, with the goal of carrying that style to new terrain -- like a slope -- without designing new reward functions. I'm responsible for the full implementation: pretraining models, running RL simulations, and testing different model/algorithm combinations.",
+						"Implemented a discriminator-free style-transfer pipeline in Isaac Lab for a Unitree G1: a model pre-trained on retargeted human motion predicts what comes next, and the robot is rewarded for matching it, avoiding the tuning headaches of AMP-style discriminators. I was responsible for the implementation until I left for Persona AI, when it passed to a team who later verified the method and saw more expressive walking.",
 				},
 				{
 					title: "Teleoperation Hand Retargeting",
 					description:
-						"Designing and validating my own retargeting algorithm for live hand teleoperation -- sensing how a human bends their fingers and translating that onto the ARISTO hand, including its hyperextension. I'm building two approaches in parallel, a camera-based hand-pose estimator and a motion-capture glove, with early results from the vision pipeline so far.",
+						"Designed and implemented my own real-time retargeting pipeline for the ARISTO hand: MediaPipe tracks my hand, I compute 3D angles for the thumb, index, and middle fingers, and map them onto ARISTO's three fingers, with a pinch mode that unlocks its hyperextension. It worked best in simulation, with great responsiveness but limited dexterity, and the project ended when I left for Persona AI.",
 				},
 				{
 					title: "Whole-Body Locomanipulation for the Unitree G1",
 					description:
-						"Built an RL training pipeline that teaches a Unitree G1 to combine walking and arm manipulation through a simple curriculum -- first walking, then walking at different speeds, then reaching toward a position target within its local workspace. I owned the RL training and sim2sim transfer, working with a labmate who built the higher-level planner. We validated the approach in Mujoco with the G1 walking to a table, picking up a box, and walking again while carrying it.",
+						"Built an RL pipeline that teaches the Unitree G1 and R1 to combine walking and arm manipulation. I trained velocity-tracking and end-effector-tracking policies in parallel, then combined them by keeping the end-effector reward in the robot's local frame, with a curriculum over an online-computed reachable workspace. I owned the RL training, the sim2sim transfer, and the tuning across the two embodiments, working with a labmate who built the higher-level planner. We validated the approach in MuJoCo with the humanoid walking to a table, picking up a box, and carrying it to another table.",
 				},
 				{
 					title: "Embedded Systems for an Imitation-Learning Hand",
 					description:
-						"Designed the power and CAN communication PCB for ARISTO, our imitation-learning-controlled robotic hand, and wrote the driver and ROS2 integration that connect its eight motors to the rest of the control stack -- work that's now part of the ARISTO Hand paper headed to a conference.",
+						"Designed the power and CAN communication PCB for ARISTO, our imitation-learning-controlled robotic hand, and wrote the driver and ROS2 integration that connect its eight motors to the rest of the control stack -- work that's now part of the ARISTO Hand paper (IEEE/ASME AIM 2026).",
 				},
 				{
 					title: "Force/Torque Sensing for Multi-Contact Planning",
@@ -882,9 +1007,9 @@ const INFO = {
 			slug: "pike-robotics",
 			img: "/pike_robotics_logo.jpg",
 			image: "/experience/pike-robotics-1.jpg",
-			role: "Electrical Engineer",
+			role: "Mechatronics Lead",
 			company: "Pike Robotics",
-			date: "Sep 2023 - Sep 2024",
+			date: "Oct 2023 - Aug 2024",
 			website: "https://www.pikerobotics.com/",
 			desc:
 				"Owned the design and validation of an autonomous embedded system that manages an umbilical line -- providing power, communication, and non-flammable purge gas -- between a host robot and a robot operating inside an oil storage tank, working directly with the CTO on day-to-day priorities and project direction. Also designed the system's 250W power distribution PCB, meeting UL60950-1 safety standards under UL 1203 C1D1 explosion-proof conditions.",
